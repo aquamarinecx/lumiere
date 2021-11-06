@@ -143,10 +143,8 @@ export default function Header({
                         <p className="font-medium lg:text-xs">Media</p>
                         <FiChevronDown
                           className={`${
-                            open
-                              ? 'transform rotate-180'
-                              : 'ml-1 w-5 h-5 transition-transform'
-                          } lg:w-4 lg:h-4`}
+                            open && 'transform rotate-180'
+                          } lg:w-4 lg:h-4 'ml-1 w-5 h-5 transition-transform`}
                         />
                       </div>
                     </Popover.Button>
@@ -168,10 +166,8 @@ export default function Header({
                         <p className="font-medium lg:text-xs">Discover</p>
                         <FiChevronDown
                           className={`${
-                            open
-                              ? 'transform rotate-180'
-                              : 'ml-1 w-5 h-5 transition-transform'
-                          } lg:w-4 lg:h-4`}
+                            open && 'transform rotate-180'
+                          } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
                         />
                       </div>
                     </Popover.Button>
@@ -275,10 +271,8 @@ export default function Header({
                       <p className="font-medium lg:text-xs">Media</p>
                       <FiChevronDown
                         className={`${
-                          open
-                            ? 'transform rotate-180'
-                            : 'ml-1 w-5 h-5 transition-transform'
-                        } lg:w-4 lg:h-4`}
+                          open && 'transform rotate-180'
+                        } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
                       />
                     </div>
                   </Popover.Button>
@@ -306,10 +300,8 @@ export default function Header({
                       <p className="font-medium lg:text-xs">Discover</p>
                       <FiChevronDown
                         className={`${
-                          open
-                            ? 'transform rotate-180'
-                            : 'ml-1 w-5 h-5 transition-transform'
-                        } lg:w-4 lg:h-4`}
+                          open && 'transform rotate-180'
+                        } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
                       />
                     </div>
                   </Popover.Button>

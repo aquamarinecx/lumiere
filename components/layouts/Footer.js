@@ -359,7 +359,7 @@ export default function Footer() {
             </div>
             <div className="flex">
               <a
-                href="https://www.linkedin.com/company/project-lumiere"
+                href="https://www.linkedin.com/company/lumierecodes"
                 target="_blank"
                 rel="noreferrer noopener"
               >
@@ -367,7 +367,7 @@ export default function Footer() {
               </a>
               <div className="mx-3 border-r border-gray-600" />
               <a
-                href="https://github.com/AnthonyKuang/ProjectLumiere"
+                href="https://github.com/project-lumiere/lumiere.codes"
                 target="_blank"
                 rel="noreferrer noopener"
               >
@@ -419,7 +419,7 @@ export default function Footer() {
 
           <div className="flex justify-center mt-8">
             <a
-              href="https://www.linkedin.com/company/project-lumiere"
+              href="https://www.linkedin.com/company/lumierecodes"
               target="_blank"
               rel="noreferrer noopener"
             >
@@ -427,7 +427,7 @@ export default function Footer() {
             </a>
             <div className="mx-3 border-r border-gray-600" />
             <a
-              href="https://github.com/AnthonyKuang/ProjectLumiere"
+              href="https://github.com/project-lumiere/lumiere.codes"
               target="_blank"
               rel="noreferrer noopener"
             >
