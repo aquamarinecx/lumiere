@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "prisma.prisma",
+    "bradlc.vscode-tailwindcss",
+    "silvenon.mdx",
+    "csstools.postcss",
+    "mikestead.dotenv",
+    "heybourn.headwind",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens"
+  ]
+}
