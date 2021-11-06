@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { getAllSlugs, getPostBySlug } from '@lib/xdm';
+import { getAllSlugs, getPostBySlug } from '@lib/mdx-bundler';
 
 export default function Post({ code, frontmatter }) {
   useEffect(() => console.log(frontmatter), [frontmatter]);
