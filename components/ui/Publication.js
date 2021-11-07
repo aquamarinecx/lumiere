@@ -41,7 +41,7 @@ export default function Publication({ post, visibility }) {
 
   return (
     <article>
-      <Link href={`/press/${post.author.username}/${post.slug}`} passHref>
+      <Link href={`/${post.author.username}/${post.slug}`} passHref>
         <div className="p-5 transition-colors border border-gray-300 cursor-pointer dark:border-gray-700 rounded-xl hover:border-gray-400 dark:hover:border-gray-400">
           <h2 className="text-2xl font-bold">{post.title}</h2>
           <div className="flex items-center my-2 space-x-2">

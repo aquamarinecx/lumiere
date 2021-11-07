@@ -1,18 +1,23 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
+import Head from 'next/head';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { getAllSlugs, getPostBySlug } from '@lib/mdx-bundler';
+import { getAllSlugs, getPostBySlug } from '@lib/mdxBundler';
 
 export default function Post({ code, frontmatter }) {
-  useEffect(() => console.log(frontmatter), [frontmatter]);
-
   const Component = useMemo(() => getMDXComponent(code), [code]);
 
-  return <Component />;
+  return (
+    <>
+      <Head>
+        <title>{frontmatter.title}</title>
+      </Head>
+      <Component />
+    </>
+  );
 }
 
 export const getStaticPaths = async () => {
-  const slugs = await getAllSlugs('blog');
-  console.log(slugs);
+  const slugs = await getAllSlugs(['company', 'blog']);
 
   return {
     paths: slugs.map((slug) => ({
@@ -25,7 +30,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { code, frontmatter } = await getPostBySlug('blog', params.post);
+  const { code, frontmatter } = await getPostBySlug(
+    ['company', 'blog'],
+    params.post
+  );
 
   return {
     props: {

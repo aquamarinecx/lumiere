@@ -12,7 +12,7 @@ const UsernameForm = ({ initialUsername, redirectUrl }) => {
     e.preventDefault();
 
     try {
-      const body = { username: `@${username}` };
+      const body = { username: `$${username}` };
       const response = await fetch('/api/user/username', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -33,7 +33,7 @@ const UsernameForm = ({ initialUsername, redirectUrl }) => {
   return (
     <>
       <form onSubmit={submitUsername} className="space-x-2">
-        <span>@</span>
+        <span>$</span>
         <input
           type="text"
           onChange={(e) => setUsername(e.target.value)}

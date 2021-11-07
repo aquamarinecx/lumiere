@@ -186,8 +186,7 @@ export default function Home({ tweets }) {
                 MDX
               </a>{' '}
               editor empowers creators with capabilities never seen in
-              traditional publication platforms. We support the entire
-              GFM-Compliant{' '}
+              traditional publication platforms. We support the GFM-Compliant{' '}
               <a
                 href="https://daringfireball.net/projects/markdown/"
                 target="_blank"

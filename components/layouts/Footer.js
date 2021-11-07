@@ -44,14 +44,14 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/changelog">
+              <Link href="/resources/changelog">
                 <a className="font-normal text-gray-500 hover:text-gray-400">
                   Changelog
                 </a>
               </Link>
             </li>
             <li>
-              <Link href="/contact">
+              <Link href="/resources/contact">
                 <a className="font-normal text-gray-500 hover:text-gray-400">
                   Contact Us
                 </a>
@@ -99,21 +99,21 @@ export default function Footer() {
           <ul>
             <h3 className="heading-tertiary">Legal</h3>
             <li>
-              <Link href="/legal/privacy">
+              <Link href="/company/legal/privacy">
                 <a className="font-normal text-gray-500 hover:text-gray-400">
                   Privacy Policy
                 </a>
               </Link>
             </li>
             <li>
-              <Link href="/legal/terms">
+              <Link href="/company/legal/terms">
                 <a className="font-normal text-gray-500 hover:text-gray-400">
                   Terms of Service
                 </a>
               </Link>
             </li>
             <li>
-              <Link href="/legal/cla">
+              <Link href="/company/legal/cla">
                 <a className="font-normal text-gray-500 hover:text-gray-400">
                   Contributors
                 </a>
@@ -193,14 +193,14 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/changelog">
+                    <Link href="/resources/changelog">
                       <a className="block mb-2 font-normal text-gray-500 hover:text-gray-400">
                         Changelog
                       </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/contact">
+                    <Link href="/resources/contact">
                       <a className="block mb-4 font-normal text-gray-500 hover:text-gray-400">
                         Contact Us
                       </a>
@@ -288,21 +288,21 @@ export default function Footer() {
                 </Disclosure.Button>
                 <Disclosure.Panel as="ul" className="mt-1 ml-3">
                   <li>
-                    <Link href="/legal/privacy">
+                    <Link href="/company/legal/privacy">
                       <a className="block mb-2 font-normal text-gray-500 hover:text-gray-400">
                         Privacy Policy
                       </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/legal/terms">
+                    <Link href="/company/legal/terms">
                       <a className="block mb-2 font-normal text-gray-500 hover:text-gray-400">
                         Terms of Service
                       </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/legal/cla">
+                    <Link href="/company/legal/cla">
                       <a className="block mb-4 font-normal text-gray-500 hover:text-gray-400">
                         Contributors
                       </a>

@@ -1,7 +1,6 @@
 import prisma from '@lib/prisma';
 import Layout from '@components/layouts/Layout';
 import Head from 'next/head';
-import { useEffect } from 'react';
 
 export default function Publication({
   title,
@@ -10,10 +9,6 @@ export default function Publication({
   updatedAt,
   author,
 }) {
-  useEffect(() => {
-    console.log(content);
-  }, [content]);
-
   return (
     <>
       <Head>

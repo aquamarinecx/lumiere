@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { getPostBySlug } from '@lib/mdxBundler';
 
-export default function Contributing({ code, frontmatter }) {
+export default function Terms({ code, frontmatter }) {
   const Component = useMemo(() => getMDXComponent(code), [code]);
 
   return (
@@ -18,8 +18,8 @@ export default function Contributing({ code, frontmatter }) {
 
 export const getStaticProps = async () => {
   const { code, frontmatter } = await getPostBySlug(
-    ['resources'],
-    'contributing'
+    ['company', 'legal'],
+    'terms'
   );
 
   return {
