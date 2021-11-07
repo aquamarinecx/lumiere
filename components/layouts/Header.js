@@ -133,51 +133,31 @@ export default function Header({
               </a>
             </Link>
           </div>
-          <nav className="mt-1 md:hidden">
-            <Popover.Group className="flex text-sm font-medium">
-              <Popover className="ml-8 lg:ml-7">
-                {({ open }) => (
-                  <>
-                    <Popover.Button>
-                      <div className="flex items-center transition-colors hover:text-gray-300">
-                        <p className="font-medium lg:text-xs">Media</p>
-                        <FiChevronDown
-                          className={`${
-                            open && 'transform rotate-180'
-                          } lg:w-4 lg:h-4 'ml-1 w-5 h-5 transition-transform`}
-                        />
-                      </div>
-                    </Popover.Button>
-                    <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
-                      <div className="container">
-                        <Link href="/press">
-                          <a className="block">Lumiere Press</a>
-                        </Link>
-                      </div>
-                    </Popover.Panel>
-                  </>
-                )}
-              </Popover>
-              <Popover className="ml-8 lg:ml-7">
-                {({ open }) => (
-                  <>
-                    <Popover.Button>
-                      <div className="flex items-center transition-colors hover:text-gray-300">
-                        <p className="font-medium lg:text-xs">Discover</p>
-                        <FiChevronDown
-                          className={`${
-                            open && 'transform rotate-180'
-                          } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
-                        />
-                      </div>
-                    </Popover.Button>
-                    <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
-                      <div className="container beta">This is Discover</div>
-                    </Popover.Panel>
-                  </>
-                )}
-              </Popover>
-            </Popover.Group>
+          <nav className="flex mt-1 text-sm md:hidden">
+            <Link href="/press">
+              <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
+                Publications
+              </a>
+            </Link>
+            <Popover className="ml-8 lg:ml-7">
+              {({ open }) => (
+                <>
+                  <Popover.Button>
+                    <div className="flex items-center transition-colors hover:text-gray-300">
+                      <p className="font-medium lg:text-xs">Discover</p>
+                      <FiChevronDown
+                        className={`${
+                          open && 'transform rotate-180'
+                        } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
+                      />
+                    </div>
+                  </Popover.Button>
+                  <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
+                    <div className="container beta">This is Discover</div>
+                  </Popover.Panel>
+                </>
+              )}
+            </Popover>
           </nav>
           <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
             <input
@@ -261,57 +241,31 @@ export default function Header({
             </a>
           </Link>
         </div>
-        <nav className="md:hidden">
-          <Popover.Group className="flex text-sm font-medium">
-            <Popover className="ml-8 lg:ml-7">
-              {({ open }) => (
-                <>
-                  <Popover.Button>
-                    <div className="flex items-center transition-colors hover:text-gray-300">
-                      <p className="font-medium lg:text-xs">Media</p>
-                      <FiChevronDown
-                        className={`${
-                          open && 'transform rotate-180'
-                        } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
-                      />
-                    </div>
-                  </Popover.Button>
-                  <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
-                    <div className="container">
-                      <Link href="/press" passHref>
-                        <button
-                          type="button"
-                          className="block"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          Lumiere Press
-                        </button>
-                      </Link>
-                    </div>
-                  </Popover.Panel>
-                </>
-              )}
-            </Popover>
-            <Popover className="ml-8 lg:ml-7">
-              {({ open }) => (
-                <>
-                  <Popover.Button>
-                    <div className="flex items-center transition-colors hover:text-gray-300">
-                      <p className="font-medium lg:text-xs">Discover</p>
-                      <FiChevronDown
-                        className={`${
-                          open && 'transform rotate-180'
-                        } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
-                      />
-                    </div>
-                  </Popover.Button>
-                  <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
-                    <div className="container beta">This is Discover</div>
-                  </Popover.Panel>
-                </>
-              )}
-            </Popover>
-          </Popover.Group>
+        <nav className="flex mt-1 text-sm md:hidden">
+          <Link href="/press">
+            <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
+              Publications
+            </a>
+          </Link>
+          <Popover className="ml-8 lg:ml-7">
+            {({ open }) => (
+              <>
+                <Popover.Button>
+                  <div className="flex items-center transition-colors hover:text-gray-300">
+                    <p className="font-medium lg:text-xs">Discover</p>
+                    <FiChevronDown
+                      className={`${
+                        open && 'transform rotate-180'
+                      } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
+                    />
+                  </div>
+                </Popover.Button>
+                <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
+                  <div className="container beta">This is Discover</div>
+                </Popover.Panel>
+              </>
+            )}
+          </Popover>
         </nav>
         <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
           <input
