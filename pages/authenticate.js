@@ -29,7 +29,7 @@ export default function Authenticate({ providers }) {
   return (
     <>
       <Head>
-        <title>Authenticate</title>
+        <title>Authenticate — Lumiere</title>
       </Head>
 
       <div className="grid h-screen place-items-center">

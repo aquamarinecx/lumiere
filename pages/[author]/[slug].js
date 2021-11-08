@@ -12,7 +12,7 @@ export default function Publication({
   return (
     <>
       <Head>
-        <title>{`${author.username} | ${title}`}</title>
+        <title>{`${author.username} — ${title}`}</title>
       </Head>
 
       <article className="prose dark:prose-dark">

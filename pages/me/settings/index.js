@@ -44,7 +44,7 @@ export default function Settings() {
   return (
     <>
       <Head>
-        <title>Settings</title>
+        <title>Settings — Lumiere</title>
       </Head>
       <h1 className="heading-primary">Settings</h1>
       <div className="divide-y divide-gray-400">

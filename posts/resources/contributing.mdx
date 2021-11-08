@@ -1,3 +1,7 @@
+---
+title: Contributing Guide — Lumiere
+---
+
 # Contributing to Lumiere
 
 Thanks for expressing your interest in contributing to Lumiere! We encourage you to take a look at this document before
@@ -14,7 +18,7 @@ that, consult the [Node.js documentation](https://docs.npmjs.com/downloading-and
 them.
 
 0. To verify that Node.js and npm are installed, run their commands with the version flag (`-v`) like below. If installed,
-the version of your Node.js and npm installations should be outputted.
+   the version of your Node.js and npm installations should be outputted.
 
 ```bash
 node -v
@@ -22,7 +26,7 @@ npm -v
 ```
 
 1. Clone Lumiere's project repository from GitHub using Git's `clone` command. This can be done anywhere, as long as it is
-easily accessible by you.
+   easily accessible by you.
 
 ```bash
 git clone https://github.com/project-lumiere/lumiere.codes.git
@@ -36,7 +40,7 @@ cd path/to/Lumiere/repository
 
 > Replace `path/to/Lumiere/repository` with the actual location of the cloned Lumiere folder.
 
-3. Install all of Lumiere's dependenies using npm.
+3. Install all of Lumiere's dependencies using npm.
 
 ```bash
 npm install
@@ -50,7 +54,7 @@ npx prisma generate
 ```
 
 5. Link and pull the required environment variables from Vercel to your project. If you have not authenticated yourself
-previously, do so before running the `link` command.
+   previously, do so before running the `link` command.
 
 ```bash
 npx vercel login # If you have not authenticated yourself
@@ -61,8 +65,8 @@ npx vercel env pull
 
 > **Important!**
 > If you have access to the variables, an `.env` file should be created at the root of your local clone of Lumiere. Please
-do not expose this file (and the contents of it) anywhere, including GitHub. Git is configured to ignore the
-`.env` file (see `.gitignore`), but please exercise caution anyway when before committing or pushing.
+> do not expose this file (and the contents of it) anywhere, including GitHub. Git is configured to ignore the
+> `.env` file (see `.gitignore`), but please exercise caution anyway when before committing or pushing.
 
 > This requires you to be a member of the Lumiere team on Vercel. If you need access to it, please contact Anthony.
 
@@ -73,8 +77,8 @@ npm run dev
 ```
 
 7. You may now get started making changes. Use the local version (running in `localhost`) to preview any changes you've made.
-Note that any changes here will not be reflected until you push to the Lumiere project repository; from there, Vercel will
-automatically deploy your changes to the live site.
+   Note that any changes here will not be reflected until you push to the Lumiere project repository; from there, Vercel will
+   automatically deploy your changes to the live site.
 
 > Need help? Feel free to reach out to Anthony or Arash.
 

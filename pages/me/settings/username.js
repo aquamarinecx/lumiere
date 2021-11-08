@@ -17,7 +17,7 @@ export default function Username() {
   return (
     <>
       <Head>
-        <title>Username | Lumiere</title>
+        <title>Username — Lumiere</title>
       </Head>
       <div className="grid h-screen text-center place-items-center">
         <main>

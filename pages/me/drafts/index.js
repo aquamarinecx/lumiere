@@ -18,7 +18,7 @@ export default function Drafts({ drafts }) {
   return (
     <>
       <Head>
-        <title>My Drafts</title>
+        <title>My Drafts — Lumiere</title>
       </Head>
 
       <>
