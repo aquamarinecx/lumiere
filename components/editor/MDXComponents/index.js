@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Confetti from 'react-confetti';
 import Codepen from '@components/editor/MDXComponents/Codepen';
 import CodeSandbox from '@components/editor/MDXComponents/CodeSandbox';
+import Figma from '@components/editor/MDXComponents/Figma';
 
 const a = (props) => {
   const { href, children } = props;
@@ -75,6 +76,7 @@ const MDXComponents = {
   Codepen,
   CodeSandbox,
   ConfettiComponent,
+  Figma,
 };
 
 export default MDXComponents;
