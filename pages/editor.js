@@ -56,7 +56,7 @@ export default function Editor() {
   return (
     <>
       <Head>
-        <title>Lumiere Editor</title>
+        <title>Editor — Lumiere</title>
       </Head>
 
       <Header

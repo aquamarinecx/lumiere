@@ -4,7 +4,6 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     @apply overflow-x-hidden;
   }
 
@@ -79,12 +78,12 @@
   }
 
   .gutter.gutter-horizontal {
-    background-image: url('/images/gutter/vertical.png');
+    background-image: url("/images/gutter/vertical.png");
     cursor: col-resize;
   }
 
   .gutter.gutter-vertical {
-    background-image: url('/images/gutter/horizontal.png');
+    background-image: url("/images/gutter/horizontal.png");
     cursor: row-resize;
   }
 
@@ -93,7 +92,7 @@
   }
 
   .beta:before {
-    content: 'This feature is in development';
+    content: "This feature is in development";
     transform: translate(-50%, 105%) scale(1);
   }
 
@@ -158,7 +157,7 @@
   }
 
   .token.deleted:not(.prefix)::after {
-    content: '';
+    content: "";
     @apply absolute inset-0 block bg-opacity-25 pointer-events-none bg-rose-400;
   }
 

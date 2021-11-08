@@ -46,7 +46,7 @@ export default function EditPublication({
   return (
     <>
       <Head>
-        <title>[Publication] {title}</title>
+        <title>[Publication] — {title}</title>
       </Head>
 
       <Header

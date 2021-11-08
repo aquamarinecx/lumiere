@@ -18,7 +18,7 @@ export default function Publications({ publications }) {
   return (
     <>
       <Head>
-        <title>My Publications</title>
+        <title>My Publications — Lumiere</title>
       </Head>
       <h1 className="mb-5 heading-primary">Your Publications</h1>
       {publications.length === 0 ? (

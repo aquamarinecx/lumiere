@@ -8,7 +8,7 @@ export default function Press({ publications }) {
   return (
     <>
       <Head>
-        <title>Lumiere Press</title>
+        <title>Press — Lumiere</title>
       </Head>
 
       <>

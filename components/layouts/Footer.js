@@ -108,7 +108,7 @@ export default function Footer() {
             <li>
               <Link href="/company/legal/terms">
                 <a className="font-normal text-gray-500 hover:text-gray-400">
-                  Terms of Service
+                  Terms and Conditions
                 </a>
               </Link>
             </li>
@@ -297,7 +297,7 @@ export default function Footer() {
                   <li>
                     <Link href="/company/legal/terms">
                       <a className="block mb-2 font-normal text-gray-500 hover:text-gray-400">
-                        Terms of Service
+                        Terms and Conditions
                       </a>
                     </Link>
                   </li>

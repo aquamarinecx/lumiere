@@ -40,7 +40,7 @@ export default function Draft({ title, slug, content, createdAt, updatedAt }) {
   return (
     <>
       <Head>
-        <title>[Draft] {title}</title>
+        <title>[Draft] — {title}</title>
       </Head>
 
       <Header

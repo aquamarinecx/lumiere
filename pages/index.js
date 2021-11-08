@@ -28,7 +28,7 @@ export default function Home({ tweets }) {
   return (
     <div className="bg-gray-900">
       <Head>
-        <title>Lumiere | Beautiful CS Publications</title>
+        <title>Beautiful CS Publications — Lumiere</title>
         <meta name="description" content="Lumiere website" />
       </Head>
 
