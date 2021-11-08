@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import Head from 'next/head';
-import { signIn, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
 import MDXEditor from '@components/editor/MDXEditor';
@@ -14,12 +14,7 @@ export default function Editor() {
   const [slug, setSlug] = useState('');
   const titleInput = useRef(null);
   const router = useRouter();
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      signIn();
-    },
-  });
+  const { data: session } = useSession();
 
   const [state, setConfig] = useXdm({
     value: '',
@@ -46,12 +41,10 @@ export default function Editor() {
   };
 
   useBeforeunload((event) => {
-    if (title !== '' || state.value !== '') {
+    if (session && (title !== '' || state.value !== '')) {
       event.preventDefault();
     }
   });
-
-  if (status === 'loading') return null;
 
   return (
     <>

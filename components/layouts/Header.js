@@ -81,19 +81,31 @@ export default function Header({
             )}
           </div>
           <div className="flex ml-auto">
-            <button
-              type="button"
-              className="px-4 py-3 mr-6 text-xs button-tertiary lg:text-2xs"
-              onClick={title ? saveDraft : showUntitledError}
-            >
-              Save draft
-            </button>
-            <Avatar
-              profileImageSrc={session.user.image}
-              profileName={session.user.name}
-              renderPosition="fullscreen"
-              pageType="editor"
-            />
+            {session && (
+              <button
+                type="button"
+                className="px-4 py-3 mr-5 text-xs button-tertiary lg:text-2xs"
+                onClick={title ? saveDraft : showUntitledError}
+              >
+                Save draft
+              </button>
+            )}
+            {session ? (
+              <Avatar
+                profileImageSrc={session.user.image}
+                profileName={session.user.name}
+                renderPosition="fullscreen"
+                pageType="editor"
+              />
+            ) : (
+              <button
+                type="button"
+                className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
+                onClick={() => signIn()}
+              >
+                Sign in
+              </button>
+            )}
           </div>
         </header>
         <button

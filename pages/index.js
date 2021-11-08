@@ -56,18 +56,17 @@ export default function Home({ tweets }) {
               levels of customization and liberty, by design.
             </p>
             <div className="flex mt-20 sm:mt-10">
-              <Link href="/press">
+              <Link href="/editor">
                 <a className="flex items-center mr-6 button-secondary pl-4 pr-2 py-2 text-xs lg:text-2xs sm:pl-3 sm:pr-1.5 sm:py-1.5">
-                  <p className="mr-2">See Publications</p>
+                  <p className="mr-2">Try the editor</p>
                   <FiChevronRight className="w-5 h-5 lg:w-4 lg:h-4" />
                 </a>
               </Link>
-              <button
-                type="button"
-                className="button-tertiary px-4 py-2 text-xs lg:text-2xs sm:py-1.5 beta"
-              >
-                Support us
-              </button>
+              <Link href="/press">
+                <a className="button-tertiary px-4 py-2 text-xs lg:text-2xs sm:py-1.5">
+                  See publications
+                </a>
+              </Link>
             </div>
           </div>
         </section>
