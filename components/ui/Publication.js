@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { getTimeAndDate } from '@lib/utilities/formatDate';
 import Link from 'next/link';
 import { FaPen, FaClock } from 'react-icons/fa';
+import Article from '@components/ui/Article';
 
 export default function Publication({ post, visibility }) {
   const router = useRouter();
@@ -42,7 +43,7 @@ export default function Publication({ post, visibility }) {
   return (
     <article>
       <Link href={`/${post.author.username}/${post.slug}`} passHref>
-        <div className="p-5 transition-colors border border-gray-300 cursor-pointer dark:border-gray-700 rounded-xl hover:border-gray-400 dark:hover:border-gray-400">
+        <Article title={`View ${post.title}`}>
           <h2 className="text-2xl font-bold">{post.title}</h2>
           <div className="flex items-center my-2 space-x-2">
             <Image
@@ -64,7 +65,7 @@ export default function Publication({ post, visibility }) {
               Updated on {getTimeAndDate(post.updatedAt)}
             </p>
           </span>
-        </div>
+        </Article>
       </Link>
       {visibility === 'private' && (
         <div className="flex flex-row mt-2 space-x-2">

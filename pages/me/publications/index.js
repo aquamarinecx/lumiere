@@ -4,6 +4,7 @@ import prisma from '@lib/prisma';
 import Head from 'next/head';
 import { getSession, useSession, signIn } from 'next-auth/react';
 import { FaRegFile } from 'react-icons/fa';
+import Article from '@components/ui/Article';
 
 export default function Publications({ publications }) {
   const { status } = useSession({
@@ -22,14 +23,14 @@ export default function Publications({ publications }) {
       </Head>
       <h1 className="mb-5 heading-primary">Your Publications</h1>
       {publications.length === 0 ? (
-        <section className="flex flex-col items-center justify-center w-full h-full p-5 border border-gray-700 rounded-xl">
+        <Article placeholder>
           <FaRegFile className="w-8 h-8 mb-5 text-gray-500" />
           <h2 className="text-xl font-bold">No publications were found.</h2>
           <p>
             Go ahead and create a publication! Public publications can be found
             here after you publish a draft.
           </p>
-        </section>
+        </Article>
       ) : (
         <section className="space-y-5">
           {publications.map((publication) => (
