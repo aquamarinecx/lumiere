@@ -10,14 +10,6 @@
   body {
     @apply min-h-screen leading-relaxed text-gray-400 bg-gray-100 dark:bg-gray-900;
   }
-
-  a {
-    @apply font-medium text-blue-500 transition-colors hover:text-blue-400;
-  }
-
-  ::selection {
-    @apply text-gray-100 bg-blue-550;
-  }
 }
 
 @layer components {
