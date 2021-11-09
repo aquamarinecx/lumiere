@@ -74,7 +74,7 @@
   }
 
   .gutter {
-    @apply bg-gray-700 bg-center bg-no-repeat;
+    @apply bg-gray-600 bg-center bg-no-repeat;
   }
 
   .gutter.gutter-horizontal {

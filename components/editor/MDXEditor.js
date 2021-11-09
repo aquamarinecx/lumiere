@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState, useRef, useEffect } from 'react';
 import { VFileMessage } from 'vfile-message';
 import CodeMirror from 'rodemirror';
 import { basicSetup } from '@codemirror/basic-setup';
@@ -10,6 +10,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Split from 'react-split';
 import MDXComponents from '@components/editor/MDXComponents';
 import { statistics } from 'vfile-statistics';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => (
   <div role="alert">
@@ -22,11 +23,20 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => (
 );
 
 // eslint-disable-next-line react/display-name
-const MemoizedCodeMirror = memo((props) => (
-  <ErrorBoundary FallbackComponent={ErrorFallback}>
-    <CodeMirror {...props} />
-  </ErrorBoundary>
-));
+const MemoizedCodeMirror = memo((props) => {
+  const codeMirrorRef = useRef(null);
+
+  useEffect(() => {
+    codeMirrorRef.current.style.height = '100%';
+    codeMirrorRef.current.children[0].style.height = '100%';
+  }, []);
+
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <CodeMirror {...props} ref={codeMirrorRef} />
+    </ErrorBoundary>
+  );
+});
 
 const FallbackComponent = ({ error }) => {
   const message = new VFileMessage(error);
@@ -72,33 +82,24 @@ export default function Editor({ state, setConfig, collapsed }) {
         return gutter;
       }}
     >
-      <section className="overflow-y-auto">
-        <MemoizedCodeMirror
-          value={state.value}
-          extensions={extensions}
-          onUpdate={onUpdate}
-          onEditorViewChange={(view) => setEditorView(view)}
-        />
-        <button
-          type="button"
-          onClick={() =>
-            setExtensions([...extensions, EditorView.lineWrapping])
-          }
-        >
-          Click me to add line wrapping!
-        </button>
-        <button
-          type="button"
-          onClick={() =>
-            setExtensions(
-              extensions.filter(
-                (extension) => extension !== EditorView.lineWrapping
-              )
-            )
-          }
-        >
-          Click me to remove line wrapping!
-        </button>
+      <section>
+        <Tabs className="h-full">
+          <TabPanel className="h-full">
+            <MemoizedCodeMirror
+              value={state.value}
+              extensions={extensions}
+              onUpdate={onUpdate}
+              onEditorViewChange={(view) => setEditorView(view)}
+            />
+          </TabPanel>
+          <TabPanel>
+            <h1>These are the settings!</h1>
+          </TabPanel>
+          <TabList className="flex">
+            <Tab>Editor</Tab>
+            <Tab>Settings</Tab>
+          </TabList>
+        </Tabs>
       </section>
 
       <section className="overflow-y-auto">

@@ -110,7 +110,7 @@ export default function Header({
         </header>
         <button
           type="button"
-          className="absolute top-0 z-50 grid w-8 h-6 transition-all -translate-x-1/2 -translate-y-4 bg-gray-600 left-1/2 place-items-center rounded-b-md hover:rounded-b-full hover:translate-y-0"
+          className="absolute top-0 z-50 grid w-8 h-6 transition-all -translate-x-1/2 -translate-y-4 bg-gray-500 left-1/2 place-items-center rounded-b-md hover:rounded-b-full hover:translate-y-0"
           onClick={() => setCollapsed(!collapsed)}
         >
           <FiChevronUp
