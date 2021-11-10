@@ -286,7 +286,7 @@ export default function Header({
             placeholder="Search for anything"
             className={`text-field ${
               session ? 'pr-18 lg:pr-14' : 'pr-9 lg:pr-8'
-            }`}
+            } border-gray-700`}
           />
           <FiSearch className="absolute right-0 w-6 h-6 mr-4 text-gray-600" />
         </form>
