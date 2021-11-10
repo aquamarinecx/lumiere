@@ -13,6 +13,10 @@
 }
 
 @layer components {
+  .border-tertiary {
+    @apply transition-colors border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-400;
+  }
+
   .container {
     @apply max-w-6xl px-12 mx-auto md:px-7;
   }
@@ -38,11 +42,11 @@
   }
 
   .button-tertiary {
-    @apply font-medium text-gray-400 transition-colors duration-200 border border-gray-700 rounded-xl hover:text-gray-300 hover:border-gray-400;
+    @apply font-medium text-gray-500 duration-200 dark:text-gray-400 rounded-xl border-tertiary;
   }
 
   .button-danger {
-    @apply font-medium text-red-400 transition-colors duration-200 border border-red-300 hover:text-red-500 dark:border-red-700 rounded-xl dark:hover:text-red-300 hover:border-red-400 dark:hover:border-red-300;
+    @apply font-medium text-red-500 transition-colors duration-200 border border-red-300 dark:text-red-400 dark:border-red-700 rounded-xl hover:border-red-400 dark:hover:border-red-300;
   }
 
   .home-gradient-canvas {
