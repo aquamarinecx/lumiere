@@ -11,7 +11,7 @@ the [Developing with the source code](#developing-with-the-source-code) section 
 
 To begin, please ensure that you have a version of Node (at the very least npm) installed. If you need assistance with
 that, consult the [Node.js documentation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install
-them.
+them. Please install LTS Node v14.
 
 0. To verify that Node.js and npm are installed, run their commands with the version flag (`-v`) like below. If installed,
    the version of your Node.js and npm installations should be outputted.
