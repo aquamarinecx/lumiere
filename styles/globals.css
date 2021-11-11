@@ -26,7 +26,7 @@
 
 @layer components {
   .border-tertiary {
-    @apply transition-colors border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-400;
+    @apply transition-colors duration-200 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-400;
   }
 
   .container {
