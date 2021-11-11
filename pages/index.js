@@ -63,7 +63,7 @@ export default function Home({ tweets }) {
                 </a>
               </Link>
               <Link href="/press">
-                <a className="button-tertiary px-4 py-2 text-xs lg:text-2xs sm:py-1.5">
+                <a className="button-tertiary px-4 py-2 text-xs lg:text-2xs sm:py-1.5 border-gray-700 hover:border-gray-400 text-gray-400">
                   See publications
                 </a>
               </Link>
