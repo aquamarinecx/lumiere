@@ -105,7 +105,7 @@ export default function Editor({ state, setConfig, collapsed }) {
       <section className="overflow-y-auto">
         {state.file && state.file.result ? (
           <article className="prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
-            <div className="container">
+            <div className="container py-12">
               <ErrorBoundary FallbackComponent={FallbackComponent}>
                 {state.file.result({ components: MDXComponents })}
               </ErrorBoundary>
