@@ -3,8 +3,10 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
-import { BsGoogle } from 'react-icons/bs';
+import { BsGithub, BsGoogle } from 'react-icons/bs';
 import { useRouter } from 'next/router';
+
+const icons = {};
 
 export default function Authenticate({ providers }) {
   const router = useRouter();
@@ -25,6 +27,19 @@ export default function Authenticate({ providers }) {
 
   if (status === 'loading') {
     return null;
+  }
+
+  function GetIcon(iconName) {
+    const style = 'inline ml-4';
+
+    switch (iconName) {
+      case 'GitHub':
+        return <BsGithub className={style} />;
+      case 'Google':
+        return <BsGoogle className={style} />;
+      default:
+        return <BsGoogle />;
+    }
   }
 
   return (
@@ -68,7 +83,7 @@ export default function Authenticate({ providers }) {
                 className="flex items-center justify-center px-3 py-2 my-2 text-xl font-bold tracking-wider duration-200 border-4 border-gray-600 rounded-lg cursor-pointer w-72 hover:border-gray-300 hover:text-gray-300"
               >
                 <p>Sign in with {provider.name}</p>
-                <BsGoogle className="inline ml-4" />
+                {GetIcon(provider.name)}
               </button>
             ))}
           </section>
