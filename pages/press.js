@@ -3,6 +3,7 @@ import Head from 'next/head';
 import prisma from '@lib/prisma';
 import Publication from '@components/ui/Publication';
 import { FaRegFile } from 'react-icons/fa';
+import Article from '@components/ui/Article';
 
 export default function Press({ publications }) {
   return (
@@ -14,14 +15,14 @@ export default function Press({ publications }) {
       <>
         <h1 className="mb-5 heading-primary">Lumiere Press</h1>
         {publications.length === 0 ? (
-          <div className="flex flex-col items-center justify-center w-full h-full p-5 border border-gray-700 rounded-xl">
+          <Article placeholder>
             <FaRegFile className="w-8 h-8 mb-5 text-gray-500" />
             <h2 className="text-xl font-bold">No publications were found.</h2>
             <p>
               Press is a collection of public posts by everyone. Write and
               publish a publication to have it here in Press!
             </p>
-          </div>
+          </Article>
         ) : (
           <section className="space-y-5">
             {publications.map((publication) => (

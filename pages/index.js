@@ -63,7 +63,7 @@ export default function Home({ tweets }) {
                 </a>
               </Link>
               <Link href="/press">
-                <a className="button-tertiary px-4 py-2 text-xs lg:text-2xs sm:py-1.5">
+                <a className="button-tertiary px-4 py-2 text-xs lg:text-2xs sm:py-1.5 border-gray-700 hover:border-gray-400 text-gray-400">
                   See publications
                 </a>
               </Link>
@@ -72,7 +72,7 @@ export default function Home({ tweets }) {
         </section>
 
         <section className="mt-48 mb-32">
-          <div className="flex flex-wrap justify-between">
+          <div className="grid justify-between grid-cols-5 gap-5 sm:grid-cols-3">
             <figure className="relative w-32 h-12 lg:w-28 lg:h-9 md:w-24 md:h-7">
               <Image
                 src={hackPlus}
@@ -105,13 +105,13 @@ export default function Home({ tweets }) {
       <hr className="container border-gray-800" />
 
       <main className="container mt-32">
-        <section className="flex items-center justify-between">
+        <section className="flex flex-row items-center justify-between md:flex-col">
           <figure className="flex-1">
             <div className="relative z-10 group -rotate-3">
               <div className="absolute bg-gradient-to-tr from-amber-600 to-pink-600 -inset-0.5 rounded-lg blur-2xl group-hover:blur-xl group-hover:opacity-60 transition-all duration-200 opacity-50" />
               <Tweet key={tweets[0].id} forceDark {...tweets[0]} />
             </div>
-            <div className="relative inline-block group rotate-3 bottom-4 left-28">
+            <div className="relative inline-block group rotate-3 bottom-4 sm:left-10 left-28">
               <div className="absolute bg-gradient-to-tr from-purple-600 to-blue-600 -inset-0.5 rounded-lg blur-2xl group-hover:blur-xl group-hover:opacity-60 transition-all duration-200 opacity-50" />
               <div className="relative py-4 leading-none bg-gray-900 rounded-lg px-7 opacity-90">
                 <pre className="leading-normal language-jsx text-2xs">
@@ -175,7 +175,7 @@ export default function Home({ tweets }) {
               </div>
             </div>
           </figure>
-          <div className="flex-1 ml-32">
+          <div className="flex-1 mt-16 ml-32 md:ml-0">
             <h2 className="text-gray-200 heading-secondary">
               The most cutting-edge editing experience.
             </h2>

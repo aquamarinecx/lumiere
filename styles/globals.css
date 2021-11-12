@@ -11,16 +11,24 @@
     @apply min-h-screen leading-relaxed text-gray-400 bg-gray-100 dark:bg-gray-900;
   }
 
-  a {
-    @apply font-medium text-blue-500 transition-colors hover:text-blue-400;
+  h1 {
+    @apply heading-primary;
   }
 
-  ::selection {
-    @apply text-gray-100 bg-blue-550;
+  h2, h3 {
+    @apply heading-secondary;
+  }
+
+  h4, h5, h6 {
+    @apply heading-tertiary;
   }
 }
 
 @layer components {
+  .border-tertiary {
+    @apply transition-colors duration-200 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-400;
+  }
+
   .container {
     @apply max-w-6xl px-12 mx-auto md:px-7;
   }
@@ -46,11 +54,11 @@
   }
 
   .button-tertiary {
-    @apply font-medium text-gray-400 transition-colors duration-200 border border-gray-700 rounded-xl hover:text-gray-300 hover:border-gray-400;
+    @apply font-medium text-gray-500 duration-200 dark:text-gray-400 rounded-xl border-tertiary;
   }
 
   .button-danger {
-    @apply font-medium text-red-400 transition-colors duration-200 border border-red-300 hover:text-red-500 dark:border-red-700 rounded-xl dark:hover:text-red-300 hover:border-red-400 dark:hover:border-red-300;
+    @apply font-medium text-red-500 transition-colors duration-200 border border-red-300 dark:text-red-400 dark:border-red-700 rounded-xl hover:border-red-400 dark:hover:border-red-300;
   }
 
   .home-gradient-canvas {
@@ -101,7 +109,7 @@
   }
 
   .text-field {
-    @apply py-3 lg:py-2.5 rounded-xl border-2 bg-transparent pr-9 lg:pr-8 pl-4 text-sm border-gray-700 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-gray-600 placeholder-gray-500 transition-colors duration-200;
+    @apply py-3 lg:py-2.5 rounded-xl border-2 bg-transparent pr-9 lg:pr-8 pl-4 text-sm border-gray-300 dark:border-gray-700 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-gray-400 dark:hover:border-gray-400 placeholder-gray-500 transition-colors duration-200;
   }
 
   .token.tag,

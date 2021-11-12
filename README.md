@@ -12,7 +12,7 @@ and [TailwindCSS](https://tailwindcss.com) and deployed on [Vercel](https://verc
 
 ## Getting started
 
-In progress. Updating soon!
+In progress - updating soon!
 
 ## Contributing
 
