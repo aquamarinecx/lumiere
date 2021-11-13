@@ -11,6 +11,7 @@ export default function Post({ code, frontmatter }) {
       <Head>
         <title>{frontmatter.title}</title>
       </Head>
+      <h1>{frontmatter.date}</h1>
       <Component />
     </>
   );
