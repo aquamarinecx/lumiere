@@ -46,6 +46,7 @@
     "remark-mdx-code-meta": "^1.0.0",
     "remark-unwrap-images": "^3.0.1",
     "rodemirror": "^1.6.5",
+    "vercel": "^23.1.2",
     "vfile": "^5.2.0",
     "vfile-message": "^3.0.2",
     "vfile-statistics": "^2.0.0",
