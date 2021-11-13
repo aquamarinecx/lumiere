@@ -57,7 +57,7 @@ export default function Header({
                 placeholder="Untitled"
                 value={title}
                 ref={titleInput}
-                className={`rounded-lg bg-transparent text-xl lg:text-lg ml-3 py-2 lg:py-1.5 px-4 w-96 md:w-72 sm:w-48 hover:bg-gray-800 transition-colors text-gray-300 focus:outline-none focus:ring-2 ${
+                className={`rounded-lg bg-transparent text-xl lg:text-lg ml-3 py-2 lg:py-1.5 px-4 w-96 md:w-72 sm:w-48 border-none hover:bg-gray-800 transition-colors text-gray-300 focus:outline-none focus:ring-2 ${
                   title ? 'focus:ring-blue-600' : 'focus:ring-red-600'
                 } placeholder-gray-500`}
                 onClick={(e) => e.target.select()}
@@ -75,7 +75,7 @@ export default function Header({
               <input
                 type="text"
                 value={title}
-                className="px-4 py-2 ml-3 text-xl text-gray-300 transition-colors bg-transparent rounded-lg cursor-not-allowed w-96 hover:bg-gray-800"
+                className="px-4 py-2 ml-3 text-xl text-gray-300 transition-colors bg-transparent border-none rounded-lg cursor-not-allowed w-96 hover:bg-gray-800"
                 disabled
               />
             )}
