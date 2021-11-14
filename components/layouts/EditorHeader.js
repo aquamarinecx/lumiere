@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import { FiChevronUp } from 'react-icons/fi';
+import { FiChevronUp, FiSave } from 'react-icons/fi';
 
 const EditorHeader = ({ collapsed, setCollapsed, state }) => {
   const { data: session } = useSession();
@@ -79,7 +79,7 @@ const EditorHeader = ({ collapsed, setCollapsed, state }) => {
             <input
               type="text"
               value={title}
-              className="px-4 py-2 ml-3 text-xl text-gray-300 transition-colors bg-transparent rounded-lg cursor-not-allowed w-96 hover:bg-gray-800"
+              className="px-4 py-2 ml-3 text-xl text-gray-300 transition-colors bg-transparent rounded-lg cursor-not-allowed resize-x w-96 hover:bg-gray-800"
               disabled
             />
           )}
@@ -88,7 +88,16 @@ const EditorHeader = ({ collapsed, setCollapsed, state }) => {
           {session && (
             <button
               type="button"
-              className="px-4 py-3 mr-5 text-xs button-tertiary lg:text-2xs"
+              className="hidden px-4 py-3 mr-5 text-xs sm:inline button-tertiary lg:text-2xs"
+              onClick={title ? saveDraft : showUntitledError}
+            >
+              <FiSave />
+            </button>
+          )}
+          {session && (
+            <button
+              type="button"
+              className="px-4 py-3 mr-5 text-xs button-tertiary lg:text-2xs sm:hidden"
               onClick={title ? saveDraft : showUntitledError}
             >
               Save draft
