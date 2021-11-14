@@ -4,7 +4,7 @@ import { getSession, useSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import MDXEditor from '@components/editor/MDXEditor';
-import Header from '@components/layouts/Header';
+import EditorHeader from '@components/layouts/EditorHeader';
 import { useXdm } from '@lib/xdm';
 
 export default function EditPublication({
@@ -49,13 +49,10 @@ export default function EditPublication({
         <title>[Publication] — {title}</title>
       </Head>
 
-      <Header
-        pageType="editor"
-        title={title}
-        content={content}
-        saveDraft={savePublication}
+      <EditorHeader
         collapsed={collapsed}
         setCollapsed={setCollapsed}
+        state={state}
       />
       <MDXEditor state={state} setConfig={setConfig} collapsed={collapsed} />
     </>
