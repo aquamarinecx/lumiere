@@ -51,7 +51,7 @@
     "vfile": "^5.2.0",
     "vfile-message": "^3.0.2",
     "vfile-statistics": "^2.0.0",
-    "xdm": "^3.2.0"
+    "xdm": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
