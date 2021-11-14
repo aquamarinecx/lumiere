@@ -1,27 +1,17 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { signIn, useSession } from 'next-auth/react';
-import { Popover, Dialog } from '@headlessui/react';
 import Avatar from '@components/ui/Avatar';
-import { FiChevronDown, FiChevronUp, FiSearch } from 'react-icons/fi';
-import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
+import { Dialog, Popover } from '@headlessui/react';
 import { Gradient } from '@lib/gradient';
+import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
+import { signIn, useSession } from 'next-auth/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { FiChevronDown, FiSearch } from 'react-icons/fi';
 import { IoReorderThreeOutline } from 'react-icons/io5';
 
-export default function Header({
-  pageType,
-  setTitle,
-  title,
-  titleInput,
-  setSlug,
-  saveDraft,
-  showUntitledError,
-  collapsed,
-  setCollapsed,
-}) {
+export default function Header({ pageType }) {
   useEffect(() => {
-    if (!pageType) {
+    if (pageType === 'everything else & not home (obviously rename this)') {
       const gradient = new Gradient();
       gradient.initGradient('.header-gradient-canvas');
     }
@@ -30,98 +20,6 @@ export default function Header({
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
 
-  if (pageType === 'editor') {
-    return (
-      <>
-        <header
-          className={`relative h-18 lg:h-16 transition-transform origin-top ${
-            collapsed ? 'scale-y-0' : 'scale-y-1'
-          } flex items-center border-b border-gray-700 bg-gray-900 px-6`}
-        >
-          <div className="flex items-center">
-            <Link href="/">
-              <a>
-                <figure className="relative w-10 h-10 mb-1 lg:w-9 lg:h-9">
-                  <Image
-                    src={projectLumiere}
-                    alt="Project Lumiere logo"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </figure>
-              </a>
-            </Link>
-            {setTitle ? (
-              <input
-                type="text"
-                placeholder="Untitled"
-                value={title}
-                ref={titleInput}
-                className={`rounded-lg bg-transparent text-xl lg:text-lg ml-3 py-2 lg:py-1.5 px-4 w-96 md:w-72 sm:w-48 border-none hover:bg-gray-800 transition-colors text-gray-300 focus:outline-none focus:ring-2 ${
-                  title ? 'focus:ring-blue-600' : 'focus:ring-red-600'
-                } placeholder-gray-500`}
-                onClick={(e) => e.target.select()}
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                  setSlug(
-                    e.target.value
-                      .replaceAll(/[`~!@#$%^&*()_+={}|[;:'"<>,./?]/g, '')
-                      .replaceAll(' ', '-')
-                      .toLowerCase()
-                  );
-                }}
-              />
-            ) : (
-              <input
-                type="text"
-                value={title}
-                className="px-4 py-2 ml-3 text-xl text-gray-300 transition-colors bg-transparent rounded-lg cursor-not-allowed w-96 hover:bg-gray-800"
-                disabled
-              />
-            )}
-          </div>
-          <div className="flex ml-auto">
-            {session && (
-              <button
-                type="button"
-                className="px-4 py-3 mr-5 text-xs button-tertiary lg:text-2xs"
-                onClick={title ? saveDraft : showUntitledError}
-              >
-                Save draft
-              </button>
-            )}
-            {session ? (
-              <Avatar
-                profileImageSrc={session.user.image}
-                profileName={session.user.name}
-                renderPosition="fullscreen"
-                pageType="editor"
-              />
-            ) : (
-              <button
-                type="button"
-                className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
-                onClick={() => signIn()}
-              >
-                Sign in
-              </button>
-            )}
-          </div>
-        </header>
-        <button
-          type="button"
-          className="absolute top-0 z-50 grid w-8 h-6 transition-all -translate-x-1/2 -translate-y-4 bg-gray-500 left-1/2 place-items-center rounded-b-md hover:rounded-b-full hover:translate-y-0"
-          onClick={() => setCollapsed(!collapsed)}
-        >
-          <FiChevronUp
-            className={`w-5 h-5 text-gray-100 -mt-0.5 transition-transform ${
-              collapsed && 'rotate-180'
-            }`}
-          />
-        </button>
-      </>
-    );
-  }
   if (pageType === 'home') {
     return (
       <header className="sticky top-0 z-50 flex items-center bg-gray-900 border-b border-gray-700 bg-opacity-90 backdrop-filter backdrop-blur-sm backdrop-saturate-200 h-18 lg:h-16">
@@ -222,6 +120,8 @@ export default function Header({
       </header>
     );
   }
+
+  // Default header — for everything else
   return (
     <header className="sticky top-0 z-50 flex items-center mb-16 bg-gray-900 border-b border-gray-700 h-18 lg:h-16">
       <div className="absolute z-0 w-full h-full -mt-60 lg:-mt-64">
