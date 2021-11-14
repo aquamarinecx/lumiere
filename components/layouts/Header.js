@@ -75,7 +75,7 @@ export default function Header({
               <input
                 type="text"
                 value={title}
-                className="px-4 py-2 ml-3 text-xl text-gray-300 transition-colors bg-transparent rounded-lg cursor-not-allowed w-96 hover:bg-gray-800"
+                className="px-4 py-2 ml-3 text-xl text-gray-300 transition-colors bg-transparent border-none rounded-lg cursor-not-allowed w-96 hover:bg-gray-800"
                 disabled
               />
             )}
@@ -149,6 +149,11 @@ export default function Header({
             <Link href="/press">
               <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
                 Publications
+              </a>
+            </Link>
+            <Link href="/company/blog">
+              <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
+                Blog
               </a>
             </Link>
             <Popover className="ml-8 lg:ml-7">
@@ -257,6 +262,11 @@ export default function Header({
           <Link href="/press">
             <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
               Publications
+            </a>
+          </Link>
+          <Link href="/company/blog">
+            <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
+              Blog
             </a>
           </Link>
           <Popover className="ml-8 lg:ml-7">
