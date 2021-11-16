@@ -19,10 +19,11 @@ export default function Header({ pageType }) {
 
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
+  console.log(isOpen);
 
   if (pageType === 'home') {
     return (
-      <header className="sticky top-0 z-50 flex items-center bg-gray-900 border-b border-gray-700 bg-opacity-90 backdrop-filter backdrop-blur-sm backdrop-saturate-200 h-18 lg:h-16">
+      <header className="sticky top-0 z-40 flex items-center bg-gray-900 border-b border-gray-700 bg-opacity-90 backdrop-filter backdrop-blur-sm backdrop-saturate-200 h-18 lg:h-16">
         <div className="container flex items-center">
           <div className="pr-8 border-r border-gray-600 lg:pr-7 md:border-0 md:pr-0">
             <Link href="/">
@@ -95,35 +96,39 @@ export default function Header({ pageType }) {
           <button
             type="button"
             className="hidden w-12 h-8 ml-auto transition bg-gray-500 place-items-center rounded-2xl opacity-80 md:grid hover:bg-gray-400 hover:opacity-100"
-            onClick={() => setIsOpen(true)}
+            onClick={() => setIsOpen(!isOpen)}
           >
             <IoReorderThreeOutline className="w-6 text-gray-100 h-7" />
           </button>
         </div>
 
-        <Dialog
-          open={isOpen}
-          onClose={() => setIsOpen(false)}
-          className="fixed inset-0 z-10 overflow-y-scroll"
+        <div
+          className={`fixed top-0 z-50 w-screen h-full bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
+            isOpen ? '' : 'hidden'
+          }`}
         >
-          <div className="flex items-center justify-center min-h-screen">
-            <Dialog.Overlay className="fixed inset-0 bg-gray-900 opacity-95" />
-
-            <div className="relative w-screen h-screen pt-16 mx-auto rounded">
-              <button type="button" onClick={() => setIsOpen(false)}>
-                X
-              </button>
-              <Dialog.Title>Mobile Navbar</Dialog.Title>
-            </div>
+          <Link href="/press">
+            <a className="">
+              <h2 className="transition-colors duration-200 hover:text-gray-300">
+                Publications
+              </h2>
+            </a>
+          </Link>
+          <div>
+            <h2>Discover</h2>
+            <h3 className="text-xl transition-colors duration-200 hover:text-gray-300 beta">
+              This is Discover
+            </h3>
           </div>
-        </Dialog>
+          <nav className="flex mt-1 text-sm md:hidden" />
+        </div>
       </header>
     );
   }
 
   // Default header — for everything else
   return (
-    <header className="sticky top-0 z-50 flex items-center mb-16 bg-gray-900 border-b border-gray-700 h-18 lg:h-16">
+    <header className="sticky top-0 z-40 flex items-center mb-16 bg-gray-900 border-b border-gray-700 h-18 lg:h-16">
       <div className="absolute z-0 w-full h-full -mt-60 lg:-mt-64">
         <div className="relative h-48">
           <canvas
@@ -133,7 +138,7 @@ export default function Header({ pageType }) {
           />
         </div>
       </div>
-      <div className="container z-50 flex items-center">
+      <div className="container z-40 flex items-center">
         <div className="pr-8 border-r border-gray-600 lg:pr-7 md:border-0 md:pr-0">
           <Link href="/">
             <a>
@@ -153,6 +158,8 @@ export default function Header({ pageType }) {
             </a>
           </Link>
         </div>
+
+        {/* Menu bar for large screens */}
         <nav className="flex mt-1 text-sm md:hidden">
           <Link href="/press">
             <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
@@ -202,31 +209,36 @@ export default function Header({ pageType }) {
           </button>
         )}
 
+        {/* Menu bar for small screens */}
         <button
           type="button"
           className="hidden w-12 h-8 ml-auto transition bg-gray-500 place-items-center rounded-2xl opacity-80 md:grid hover:bg-gray-400 hover:opacity-100"
-          onClick={() => setIsOpen(true)}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <IoReorderThreeOutline className="w-6 text-gray-100 h-7" />
         </button>
       </div>
 
-      <Dialog
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        className="fixed inset-0 z-10 overflow-y-scroll"
+      <div
+        className={`fixed top-0 z-50 w-screen h-full bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
+          isOpen ? '' : 'hidden'
+        }`}
       >
-        <div className="flex items-center justify-center min-h-screen">
-          <Dialog.Overlay className="fixed inset-0 bg-gray-900 opacity-95" />
-
-          <div className="relative w-screen h-screen pt-16 mx-auto rounded">
-            <button type="button" onClick={() => setIsOpen(false)}>
-              X
-            </button>
-            <Dialog.Title>Mobile Navbar</Dialog.Title>
-          </div>
+        <Link href="/press">
+          <a className="">
+            <h2 className="transition-colors duration-200 hover:text-gray-300">
+              Publications
+            </h2>
+          </a>
+        </Link>
+        <div>
+          <h2>Discover</h2>
+          <h3 className="text-xl transition-colors duration-200 hover:text-gray-300 beta">
+            This is Discover
+          </h3>
         </div>
-      </Dialog>
+        <nav className="flex mt-1 text-sm md:hidden" />
+      </div>
     </header>
   );
 }
