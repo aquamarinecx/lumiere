@@ -1,5 +1,4 @@
 import Avatar from '@components/ui/Avatar';
-import { Popover } from '@headlessui/react';
 import { Gradient } from '@lib/gradient';
 import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
 import { signIn, useSession } from 'next-auth/react';
@@ -9,6 +8,12 @@ import { useEffect, useState } from 'react';
 import { FiChevronDown, FiSearch } from 'react-icons/fi';
 import { IoReorderThreeOutline } from 'react-icons/io5';
 import { useMediaQuery } from 'react-responsive';
+import NavItem from '@components/layouts/NavItem';
+
+const menuItems = [
+  { name: 'Publications', link: '/' },
+  { name: 'Discover', contents: [{ name: 'This is Discover', link: '#' }] },
+];
 
 export default function Header({ pageType }) {
   useEffect(() => {
@@ -49,27 +54,15 @@ export default function Header({ pageType }) {
 
           {/* Menu bar for large screens */}
           <nav className="flex mt-1 space-x-5 text-sm md:hidden">
-            <Link href="/press">
-              <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
-                Publications
-              </a>
-            </Link>
-            <button
-              type="button"
-              className="flex items-center transition-colors hover:text-gray-300"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <p className="font-medium lg:text-xs">Discover</p>
-              <FiChevronDown className="w-5 h-5 ml-1 transition-transform lg:w-4 lg:h-4" />
-            </button>
+            {menuItems.map((item) => (
+              <NavItem
+                title={item.name}
+                link={item.link ? item.link : undefined}
+                contents={item.contents ? item.contents : undefined}
+                key={item.name}
+              />
+            ))}
           </nav>
-          <div
-            className={`absolute left-0 w-full py-5 bg-gray-900 border-b border-gray-700 bg-opacity-90 top-18 lg:top-16 ${
-              isOpen ? '' : 'hidden'
-            }`}
-          >
-            <div className="container beta">This is Discover</div>
-          </div>
           <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
             <input
               type="text"
@@ -162,27 +155,15 @@ export default function Header({ pageType }) {
 
         {/* Menu bar for large screens */}
         <nav className="flex mt-1 space-x-5 text-sm md:hidden">
-          <Link href="/press">
-            <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
-              Publications
-            </a>
-          </Link>
-          <button
-            type="button"
-            className="flex items-center transition-colors hover:text-gray-300"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <p className="font-medium lg:text-xs">Discover</p>
-            <FiChevronDown className="w-5 h-5 ml-1 transition-transform lg:w-4 lg:h-4" />
-          </button>
+          {menuItems.map((item) => (
+            <NavItem
+              title={item.name}
+              link={item.link ? item.link : undefined}
+              contents={item.contents ? item.contents : undefined}
+              key={item.name}
+            />
+          ))}
         </nav>
-        <div
-          className={`absolute left-0 w-full py-5 bg-gray-900 border-b border-gray-700 bg-opacity-90 top-18 lg:top-16 ${
-            isOpen ? '' : 'hidden'
-          }`}
-        >
-          <div className="container beta">This is Discover</div>
-        </div>
         <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
           <input
             type="text"
