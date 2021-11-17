@@ -1,5 +1,5 @@
 import Avatar from '@components/ui/Avatar';
-import { Dialog, Popover } from '@headlessui/react';
+import { Popover } from '@headlessui/react';
 import { Gradient } from '@lib/gradient';
 import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
 import { signIn, useSession } from 'next-auth/react';
@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FiChevronDown, FiSearch } from 'react-icons/fi';
 import { IoReorderThreeOutline } from 'react-icons/io5';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Header({ pageType }) {
   useEffect(() => {
@@ -19,9 +20,10 @@ export default function Header({ pageType }) {
 
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
+  const isMobile = useMediaQuery({ maxWidth: 889 });
 
   if (pageType === 'home') {
+    // Home page header — includes several differences for the home page
     return (
       <header className="sticky top-0 z-40 flex items-center bg-gray-900 border-b border-gray-700 bg-opacity-90 backdrop-filter backdrop-blur-sm backdrop-saturate-200 h-18 lg:h-16">
         <div className="container flex items-center">
@@ -44,32 +46,30 @@ export default function Header({ pageType }) {
               </a>
             </Link>
           </div>
-          <nav className="flex mt-1 text-sm md:hidden">
+
+          {/* Menu bar for large screens */}
+          <nav className="flex mt-1 space-x-5 text-sm md:hidden">
             <Link href="/press">
               <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
                 Publications
               </a>
             </Link>
-            <Popover className="ml-8 lg:ml-7">
-              {({ open }) => (
-                <>
-                  <Popover.Button>
-                    <div className="flex items-center transition-colors hover:text-gray-300">
-                      <p className="font-medium lg:text-xs">Discover</p>
-                      <FiChevronDown
-                        className={`${
-                          open && 'transform rotate-180'
-                        } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
-                      />
-                    </div>
-                  </Popover.Button>
-                  <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
-                    <div className="container beta">This is Discover</div>
-                  </Popover.Panel>
-                </>
-              )}
-            </Popover>
+            <button
+              type="button"
+              className="flex items-center transition-colors hover:text-gray-300"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <p className="font-medium lg:text-xs">Discover</p>
+              <FiChevronDown className="w-5 h-5 ml-1 transition-transform lg:w-4 lg:h-4" />
+            </button>
           </nav>
+          <div
+            className={`absolute left-0 w-full py-5 bg-gray-900 border-b border-gray-700 bg-opacity-90 top-18 lg:top-16 ${
+              isOpen ? '' : 'hidden'
+            }`}
+          >
+            <div className="container beta">This is Discover</div>
+          </div>
           <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
             <input
               type="text"
@@ -93,6 +93,7 @@ export default function Header({ pageType }) {
             </button>
           )}
 
+          {/* Menu bar for small screens */}
           <button
             type="button"
             className="hidden w-12 h-8 ml-auto transition bg-gray-500 place-items-center rounded-2xl opacity-80 md:grid hover:bg-gray-400 hover:opacity-100"
@@ -104,7 +105,7 @@ export default function Header({ pageType }) {
 
         <div
           className={`fixed top-0 z-50 w-screen h-full bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
-            isOpen ? '' : 'hidden'
+            isOpen && isMobile ? '' : 'hidden'
           }`}
         >
           <Link href="/press">
@@ -160,32 +161,28 @@ export default function Header({ pageType }) {
         </div>
 
         {/* Menu bar for large screens */}
-        <nav className="flex mt-1 text-sm md:hidden">
+        <nav className="flex mt-1 space-x-5 text-sm md:hidden">
           <Link href="/press">
             <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
               Publications
             </a>
           </Link>
-          <Popover className="ml-8 lg:ml-7">
-            {({ open }) => (
-              <>
-                <Popover.Button>
-                  <div className="flex items-center transition-colors hover:text-gray-300">
-                    <p className="font-medium lg:text-xs">Discover</p>
-                    <FiChevronDown
-                      className={`${
-                        open && 'transform rotate-180'
-                      } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
-                    />
-                  </div>
-                </Popover.Button>
-                <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
-                  <div className="container beta">This is Discover</div>
-                </Popover.Panel>
-              </>
-            )}
-          </Popover>
+          <button
+            type="button"
+            className="flex items-center transition-colors hover:text-gray-300"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <p className="font-medium lg:text-xs">Discover</p>
+            <FiChevronDown className="w-5 h-5 ml-1 transition-transform lg:w-4 lg:h-4" />
+          </button>
         </nav>
+        <div
+          className={`absolute left-0 w-full py-5 bg-gray-900 border-b border-gray-700 bg-opacity-90 top-18 lg:top-16 ${
+            isOpen ? '' : 'hidden'
+          }`}
+        >
+          <div className="container beta">This is Discover</div>
+        </div>
         <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
           <input
             type="text"
@@ -221,7 +218,7 @@ export default function Header({ pageType }) {
 
       <div
         className={`fixed top-0 z-50 w-screen h-full bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
-          isOpen ? '' : 'hidden'
+          isOpen && isMobile ? '' : 'hidden'
         }`}
       >
         <Link href="/press">
