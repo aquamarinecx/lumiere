@@ -12,14 +12,26 @@ const NavItem = ({ title, link, contents }) => {
     if (link === undefined) {
       return (
         <div>
-          <h2>{title}</h2>
-          {contents.map((content) => (
-            <Link href={content.link} passHref key={content.name}>
-              <h3 className="text-xl transition-colors duration-200 hover:text-gray-300 beta">
-                {content.name}
-              </h3>
-            </Link>
-          ))}
+          <button
+            type="button"
+            className="flex items-center space-x-2"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <h2 className="w-max">{title}</h2>
+            <FiChevronDown
+              className={`heading-secondary transition-transform ${
+                isOpen ? 'rotate-180' : ''
+              }`}
+            />
+          </button>
+          {isOpen &&
+            contents.map((content) => (
+              <Link href={content.link} passHref key={content.name}>
+                <h3 className="text-xl transition-colors duration-200 hover:text-gray-300 beta">
+                  {content.name}
+                </h3>
+              </Link>
+            ))}
         </div>
       );
     }
