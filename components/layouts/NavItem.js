@@ -1,6 +1,6 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
-import Link from 'next/link';
 import { useMediaQuery } from 'react-responsive';
 
 const NavItem = ({ title, link, contents }) => {

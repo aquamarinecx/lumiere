@@ -1,3 +1,4 @@
+import NavItem from '@components/layouts/NavItem';
 import Avatar from '@components/ui/Avatar';
 import { Gradient } from '@lib/gradient';
 import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
@@ -5,10 +6,9 @@ import { signIn, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FiChevronDown, FiSearch } from 'react-icons/fi';
+import { FiSearch } from 'react-icons/fi';
 import { IoReorderThreeOutline } from 'react-icons/io5';
 import { useMediaQuery } from 'react-responsive';
-import NavItem from '@components/layouts/NavItem';
 
 const menuItems = [
   { name: 'Publications', link: '/' },
