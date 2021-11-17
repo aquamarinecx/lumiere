@@ -17,7 +17,7 @@ const menuItems = [
 
 export default function Header({ pageType }) {
   useEffect(() => {
-    if (pageType === 'everything else & not home (obviously rename this)') {
+    if (!(pageType === 'home')) {
       const gradient = new Gradient();
       gradient.initGradient('.header-gradient-canvas');
     }
