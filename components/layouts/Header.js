@@ -54,14 +54,15 @@ export default function Header({ pageType }) {
 
           {/* Menu bar for large screens */}
           <nav className="flex mt-1 space-x-5 text-sm md:hidden">
-            {menuItems.map((item) => (
-              <NavItem
-                title={item.name}
-                link={item.link ? item.link : undefined}
-                contents={item.contents ? item.contents : undefined}
-                key={item.name}
-              />
-            ))}
+            {!isMobile &&
+              menuItems.map((item) => (
+                <NavItem
+                  title={item.name}
+                  link={item.link ? item.link : undefined}
+                  contents={item.contents ? item.contents : undefined}
+                  key={item.name}
+                />
+              ))}
           </nav>
           <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
             <input
@@ -101,20 +102,15 @@ export default function Header({ pageType }) {
             isOpen && isMobile ? '' : 'hidden'
           }`}
         >
-          <Link href="/press">
-            <a className="">
-              <h2 className="transition-colors duration-200 hover:text-gray-300">
-                Publications
-              </h2>
-            </a>
-          </Link>
-          <div>
-            <h2>Discover</h2>
-            <h3 className="text-xl transition-colors duration-200 hover:text-gray-300 beta">
-              This is Discover
-            </h3>
-          </div>
-          <nav className="flex mt-1 text-sm md:hidden" />
+          {isMobile &&
+            menuItems.map((item) => (
+              <NavItem
+                title={item.name}
+                link={item.link ? item.link : undefined}
+                contents={item.contents ? item.contents : undefined}
+                key={item.name}
+              />
+            ))}
         </div>
       </header>
     );
@@ -155,14 +151,15 @@ export default function Header({ pageType }) {
 
         {/* Menu bar for large screens */}
         <nav className="flex mt-1 space-x-5 text-sm md:hidden">
-          {menuItems.map((item) => (
-            <NavItem
-              title={item.name}
-              link={item.link ? item.link : undefined}
-              contents={item.contents ? item.contents : undefined}
-              key={item.name}
-            />
-          ))}
+          {!isMobile &&
+            menuItems.map((item) => (
+              <NavItem
+                title={item.name}
+                link={item.link ? item.link : undefined}
+                contents={item.contents ? item.contents : undefined}
+                key={item.name}
+              />
+            ))}
         </nav>
         <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
           <input
@@ -202,19 +199,15 @@ export default function Header({ pageType }) {
           isOpen && isMobile ? '' : 'hidden'
         }`}
       >
-        <Link href="/press">
-          <a className="">
-            <h2 className="transition-colors duration-200 hover:text-gray-300">
-              Publications
-            </h2>
-          </a>
-        </Link>
-        <div>
-          <h2>Discover</h2>
-          <h3 className="text-xl transition-colors duration-200 hover:text-gray-300 beta">
-            This is Discover
-          </h3>
-        </div>
+        {isMobile &&
+          menuItems.map((item) => (
+            <NavItem
+              title={item.name}
+              link={item.link ? item.link : undefined}
+              contents={item.contents ? item.contents : undefined}
+              key={item.name}
+            />
+          ))}
         <nav className="flex mt-1 text-sm md:hidden" />
       </div>
     </header>

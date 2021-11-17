@@ -1,10 +1,38 @@
 import { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 import Link from 'next/link';
+import { useMediaQuery } from 'react-responsive';
 
 const NavItem = ({ title, link, contents }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 889 });
 
+  // Small-screen variant
+  if (isMobile) {
+    if (link === undefined) {
+      return (
+        <div>
+          <h2>{title}</h2>
+          {contents.map((content) => (
+            <Link href={content.link} passHref key={content.name}>
+              <h3 className="text-xl transition-colors duration-200 hover:text-gray-300 beta">
+                {content.name}
+              </h3>
+            </Link>
+          ))}
+        </div>
+      );
+    }
+    return (
+      <Link href={link}>
+        <a className="">
+          <h2 className="transition-colors duration-200 hover:text-gray-300">
+            {title}
+          </h2>
+        </a>
+      </Link>
+    );
+  } // Large-screen variant
   // Items which are grouped into categories
   if (link === undefined) {
     return (
