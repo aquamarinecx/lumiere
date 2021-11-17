@@ -17,9 +17,9 @@ const NavItem = ({ title, link, contents }) => {
             className="flex items-center space-x-2"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <h2 className="w-max">{title}</h2>
+            <h2 className="text-gray-200 w-max">{title}</h2>
             <FiChevronDown
-              className={`heading-secondary transition-transform ${
+              className={`heading-secondary text-gray-200  transition-transform ${
                 isOpen ? 'rotate-180' : ''
               }`}
             />
@@ -27,7 +27,7 @@ const NavItem = ({ title, link, contents }) => {
           {isOpen &&
             contents.map((content) => (
               <Link href={content.link} passHref key={content.name}>
-                <h3 className="text-xl transition-colors duration-200 hover:text-gray-300 beta">
+                <h3 className="text-xl text-gray-200 transition-colors duration-200 hover:text-gray-300 beta">
                   {content.name}
                 </h3>
               </Link>
@@ -38,7 +38,7 @@ const NavItem = ({ title, link, contents }) => {
     return (
       <Link href={link}>
         <a className="">
-          <h2 className="transition-colors duration-200 hover:text-gray-300">
+          <h2 className="text-gray-200 transition-colors duration-200 hover:text-gray-300">
             {title}
           </h2>
         </a>

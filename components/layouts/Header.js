@@ -3,10 +3,11 @@ import Avatar from '@components/ui/Avatar';
 import { Gradient } from '@lib/gradient';
 import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
 import { signIn, useSession } from 'next-auth/react';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
+import { FiSearch, FiSun, FiMoon } from 'react-icons/fi';
 import { IoReorderThreeOutline } from 'react-icons/io5';
 import { useMediaQuery } from 'react-responsive';
 
@@ -26,6 +27,7 @@ export default function Header({ pageType }) {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 889 });
+  const { theme, setTheme } = useTheme();
 
   if (pageType === 'home') {
     // Home page header — includes several differences for the home page
@@ -96,7 +98,6 @@ export default function Header({ pageType }) {
             <IoReorderThreeOutline className="w-6 text-gray-100 h-7" />
           </button>
         </div>
-
         <div
           className={`fixed top-0 z-50 w-screen h-full bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
             isOpen && isMobile ? '' : 'hidden'
@@ -111,6 +112,14 @@ export default function Header({ pageType }) {
                 key={item.name}
               />
             ))}
+          <button
+            type="button"
+            className="flex items-center space-x-2 heading-tertiary"
+            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          >
+            {theme === 'light' ? <FiSun /> : <FiMoon />}
+            <p>Toggle {theme === 'light' ? 'dark' : 'light'} mode</p>
+          </button>
         </div>
       </header>
     );
@@ -208,7 +217,14 @@ export default function Header({ pageType }) {
               key={item.name}
             />
           ))}
-        <nav className="flex mt-1 text-sm md:hidden" />
+        <button
+          type="button"
+          className="flex items-center space-x-2 heading-tertiary"
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        >
+          {theme === 'light' ? <FiSun /> : <FiMoon />}
+          <p>Toggle theme</p>
+        </button>
       </div>
     </header>
   );
