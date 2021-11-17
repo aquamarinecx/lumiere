@@ -12,7 +12,7 @@ import { IoReorderThreeOutline } from 'react-icons/io5';
 import { useMediaQuery } from 'react-responsive';
 
 const menuItems = [
-  { name: 'Publications', link: '/' },
+  { name: 'Publications', link: '/press' },
   { name: 'Discover', contents: [{ name: 'This is Discover', link: '#' }] },
 ];
 
