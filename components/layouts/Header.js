@@ -53,7 +53,7 @@ export default function Header({ pageType }) {
               </a>
             </Link>
           </div>
-
+  
           {/* Menu bar for large screens */}
           <nav className="flex mt-1 space-x-5 text-sm md:hidden">
             {!isMobile &&
@@ -169,6 +169,7 @@ export default function Header({ pageType }) {
                 key={item.name}
               />
             ))}
+
         </nav>
         <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
           <input

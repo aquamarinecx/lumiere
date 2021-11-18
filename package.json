@@ -10,6 +10,7 @@
   "dependencies": {
     "@codemirror/basic-setup": "^0.19.0",
     "@codemirror/commands": "^0.19.5",
+    "@codemirror/highlight": "^0.19.6",
     "@codemirror/lang-markdown": "^0.19.2",
     "@codemirror/theme-one-dark": "^0.19.1",
     "@codemirror/view": "^0.19.14",
@@ -19,7 +20,8 @@
     "@prisma/client": "^3.4.1",
     "ahooks": "^2.10.12",
     "date-fns": "^2.25.0",
-    "esbuild": "^0.13.12",
+    "esbuild": "^0.12.29",
+    "gray-matter": "^4.0.3",
     "mdx-bundler": "^7.0.0",
     "next": "12.0.3",
     "next-auth": "^4.0.0-beta.6",
@@ -47,10 +49,11 @@
     "remark-mdx-code-meta": "^1.0.0",
     "remark-unwrap-images": "^3.0.1",
     "rodemirror": "^1.6.5",
+    "vercel": "^23.1.2",
     "vfile": "^5.2.0",
     "vfile-message": "^3.0.2",
     "vfile-statistics": "^2.0.0",
-    "xdm": "^3.2.0"
+    "xdm": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
