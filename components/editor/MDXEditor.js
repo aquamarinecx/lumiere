@@ -132,7 +132,7 @@ export default function Editor({ state, setConfig, collapsed }) {
               />
             </TabPanel>
             <TabPanel
-              className={`absolute container top-0 h-full ${
+              className={`absolute container top-0 h-full break-words ${
                 tab === 'settings' ? 'z-10' : 'z-0'
               }`}
             >
@@ -186,6 +186,49 @@ export default function Editor({ state, setConfig, collapsed }) {
                 {state.file.result({ components: MDXComponents })}
               </ErrorBoundary>
             </div>
+
+            {/* See https://codemirror.net/6/examples/change/ for more about handling CodeMirror dispatches */}
+            <button
+              type="button"
+              onClick={() => {
+                if (!editorView) return;
+
+                const { doc } = editorView.state;
+
+                if (doc.length === 0) return;
+
+                // remove last character
+                editorView.dispatch({
+                  changes: {
+                    from: doc.length - 1,
+                    to: doc.length,
+                  },
+                });
+              }}
+            >
+              Click me to remove a character
+            </button>
+            <button
+              type="button"
+              className="block"
+              onClick={() => {
+                if (!editorView) return;
+
+                const { doc } = editorView.state;
+
+                if (doc.length === 0) return;
+
+                // remove last character
+                editorView.dispatch({
+                  changes: {
+                    from: doc.length,
+                    insert: "\n\n<CodeSandbox id='wizardly-shockley-igxxg' />",
+                  },
+                });
+              }}
+            >
+              Click me to add a CodeSandbox
+            </button>
           </article>
         ) : (
           stats.fatal && <div>{state.file.messages[0].message}</div>
