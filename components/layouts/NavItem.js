@@ -66,14 +66,11 @@ const NavItem = ({ title, link, contents }) => {
             isOpen ? '' : 'hidden'
           }`}
         >
-          {contents.map((content) => {
-            console.info(content);
-            return (
-              <Link href={content.link} passHref key={content.name}>
-                <div className="container beta">{content.name}</div>
-              </Link>
-            );
-          })}
+          {contents.map((content) => (
+            <Link href={content.link} passHref key={content.name}>
+              <div className="container beta">{content.name}</div>
+            </Link>
+          ))}
         </div>
       </>
     );
