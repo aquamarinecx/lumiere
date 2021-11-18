@@ -78,6 +78,11 @@ export default function Editor({ state, setConfig, collapsed }) {
       className={`flex ${isMobile ? 'flex-col' : 'flex-row'} ${
         collapsed ? 'h-screen -mt-18 lg:-mt-16' : 'h-editor-lg lg:h-editor-sm'
       } overflow-y-hidden`}
+      gutter={(_, direction) => {
+        const gutter = document.createElement('div');
+        gutter.className = `gutter gutter-${direction}`;
+        return gutter;
+      }}
     >
       <MemoizedCodeMirror
         value={state.value}
