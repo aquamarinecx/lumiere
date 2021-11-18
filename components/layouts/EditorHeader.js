@@ -38,7 +38,7 @@ const EditorHeader = ({ collapsed, setCollapsed, state }) => {
   return (
     <>
       <header
-        className={`relative h-18 lg:h-16 transition-transform origin-top ${
+        className={`relative h-18 lg:h-16 transition-transform origin-top flex ${
           collapsed ? 'scale-y-0' : 'scale-y-1'
         } flex items-center border-b border-gray-700 bg-gray-900 px-6`}
       >
@@ -61,7 +61,7 @@ const EditorHeader = ({ collapsed, setCollapsed, state }) => {
               placeholder="Untitled"
               value={title}
               ref={titleInput}
-              className={`rounded-lg bg-transparent text-xl lg:text-lg ml-3 py-2 lg:py-1.5 px-4 w-96 md:w-72 sm:w-48 border-none hover:bg-gray-800 transition-colors text-gray-300 focus:outline-none focus:ring-2 ${
+              className={`rounded-lg bg-transparent text-xl lg:text-lg mx-3 py-2 lg:py-1.5 px-4 w-96 md:w-72 sm:w-40 border-none hover:bg-gray-800 transition-colors text-gray-300 focus:outline-none focus:ring-2 ${
                 title ? 'focus:ring-blue-600' : 'focus:ring-red-600'
               } placeholder-gray-500`}
               onClick={(e) => e.target.select()}
@@ -88,7 +88,7 @@ const EditorHeader = ({ collapsed, setCollapsed, state }) => {
           {session && (
             <button
               type="button"
-              className="hidden px-4 py-3 mr-5 text-xs sm:inline button-tertiary lg:text-2xs"
+              className="hidden px-4 py-3 mr-4 text-xs sm:inline button-tertiary lg:text-2xs"
               onClick={title ? saveDraft : showUntitledError}
             >
               <FiSave />
