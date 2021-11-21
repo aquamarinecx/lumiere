@@ -53,7 +53,7 @@ export default function Header({ pageType }) {
               </a>
             </Link>
           </div>
-  
+
           {/* Menu bar for large screens */}
           <nav className="flex mt-1 space-x-5 text-sm md:hidden">
             {!isMobile &&
@@ -99,7 +99,7 @@ export default function Header({ pageType }) {
           </button>
         </div>
         <div
-          className={`fixed top-0 z-50 w-screen h-full bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
+          className={`fixed top-0 z-50 w-screen h-screen bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
             isOpen && isMobile ? '' : 'hidden'
           }`}
         >
@@ -169,7 +169,6 @@ export default function Header({ pageType }) {
                 key={item.name}
               />
             ))}
-
         </nav>
         <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
           <input
@@ -205,7 +204,7 @@ export default function Header({ pageType }) {
       </div>
 
       <div
-        className={`fixed top-0 z-50 w-screen h-full bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
+        className={`fixed top-0 z-50 w-screen h-screen bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
           isOpen && isMobile ? '' : 'hidden'
         }`}
       >
