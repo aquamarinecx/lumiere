@@ -99,7 +99,7 @@ export default function Header({ pageType }) {
           </button>
         </div>
         <div
-          className={`fixed top-0 z-50 w-screen h-screen bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
+          className={`fixed top-0 z-50 w-screen h-screen bg-gray-900 bg-opacity-95 mt-16 p-5 space-y-5 ${
             isOpen && isMobile ? '' : 'hidden'
           }`}
         >
@@ -112,6 +112,17 @@ export default function Header({ pageType }) {
                 key={item.name}
               />
             ))}
+          {session ? (
+            <Avatar pageType="mobile" />
+          ) : (
+            <button
+              type="button"
+              className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
+              onClick={() => signIn()}
+            >
+              Sign in
+            </button>
+          )}
           <button
             type="button"
             className="flex items-center space-x-2 heading-tertiary"
@@ -217,6 +228,17 @@ export default function Header({ pageType }) {
               key={item.name}
             />
           ))}
+        {session ? (
+          <Avatar pageType="mobile" />
+        ) : (
+          <button
+            type="button"
+            className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
+            onClick={() => signIn()}
+          >
+            Sign in
+          </button>
+        )}
         <button
           type="button"
           className="flex items-center space-x-2 heading-tertiary"
