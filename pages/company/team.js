@@ -2,17 +2,14 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import Layout from '@components/layouts/Layout';
+import { BsGithub } from 'react-icons/bs';
 
 const members = [
   {
     name: 'Warren',
     pfp: 'warren.png',
     desc: "Hey! I'm a 15 year old developer from New York! I'm heavily interested in web development and neuroscience!",
-  },
-  {
-    name: 'Warren',
-    pfp: 'warren.png',
-    desc: '15 y/o from new york!! currently suffering from school D: massive code nerd, also very interested in neuroscience joined hack club in june second most inconsistent sleep schedule known to mankind',
+    github: 'https://github.com/NebuDev14',
   },
 ];
 
@@ -30,7 +27,7 @@ export default function Team() {
       <section className="grid grid-cols-2 gap-40">
         {members.map((mem, i) => (
           <div
-            className="p-12 bg-gray-800 border border-gray-800 rounded-lg"
+            className="p-12 duration-200 bg-gray-800 border border-gray-800 rounded-3xl hover:border-pink-500"
             key={i}
           >
             <Image
@@ -42,7 +39,15 @@ export default function Team() {
             />
             <div className="mt-8">
               <h2 className="inline">{mem.name}</h2>
-              <p className="">{mem.desc}</p>
+              <p className="mt-8 text-gray-400">{mem.desc}</p>
+            </div>
+            <div className="mt-6">
+              <Link href={mem.github} passHref>
+                <BsGithub
+                  size={35}
+                  className="duration-200 hover:cursor-pointer hover:text-pink-600"
+                />
+              </Link>
             </div>
           </div>
         ))}
