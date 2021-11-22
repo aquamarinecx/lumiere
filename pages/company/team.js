@@ -6,10 +6,32 @@ import { BsGithub } from 'react-icons/bs';
 
 const members = [
   {
+    name: 'Anthony',
+    pfp: 'anthony.jpg',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad miniLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini',
+    github: 'https://github.com/AnthonyKuang',
+    pos: 'CEO',
+  },
+  {
+    name: 'Arash',
+    pfp: 'arash.jpg',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad miniLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini   ',
+    github: 'https://github.com/arashnrim',
+    pos: 'Developer',
+  },
+  {
+    name: 'Arav',
+    pfp: 'arav.jpg',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad miniLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini    ',
+    github: 'https://github.com/IamTregsthedev',
+    pos: 'CMO',
+  },
+  {
     name: 'Warren',
     pfp: 'warren.png',
     desc: "Hey! I'm a 15 year old developer from New York! I'm heavily interested in web development and neuroscience!",
     github: 'https://github.com/NebuDev14',
+    pos: 'Developer',
   },
 ];
 
@@ -24,10 +46,10 @@ export default function Team() {
       <p className="mb-12 text-gray-300 text-md">
         Thanks to all our amazing team members for making Lumiere possible!
       </p>
-      <section className="grid grid-cols-2 gap-40">
+      <section className="grid grid-cols-2 gap-8 md:grid-cols-1">
         {members.map((mem, i) => (
           <div
-            className="p-12 duration-200 bg-gray-800 border border-gray-800 rounded-3xl hover:border-pink-500"
+            className="p-12 duration-200 bg-gray-800 border border-gray-800 rounded-3xl hover:border-pink-500 md:p-8"
             key={i}
           >
             <Image
@@ -39,15 +61,16 @@ export default function Team() {
             />
             <div className="mt-8">
               <h2 className="inline">{mem.name}</h2>
+              <h3 className="mt-2 text-lg text-gray-400">{mem.pos}</h3>
+              <div className="mt-4">
+                <Link href={mem.github} passHref>
+                  <BsGithub
+                    size={35}
+                    className="duration-200 hover:cursor-pointer hover:text-pink-600"
+                  />
+                </Link>
+              </div>
               <p className="mt-8 text-gray-400">{mem.desc}</p>
-            </div>
-            <div className="mt-6">
-              <Link href={mem.github} passHref>
-                <BsGithub
-                  size={35}
-                  className="duration-200 hover:cursor-pointer hover:text-pink-600"
-                />
-              </Link>
             </div>
           </div>
         ))}
