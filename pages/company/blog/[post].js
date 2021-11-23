@@ -14,7 +14,7 @@ export default function Post({ code, frontmatter }) {
       <Head>
         <title>{frontmatter.title}</title>
       </Head>
-      <div className="mb-12">
+      <div className="mb-12 md:mb-4">
         <div className="w-full text-center border-b border-gray-500">
           <p className="text-base text-gray-400">
             Published {frontmatter.date}
@@ -22,9 +22,9 @@ export default function Post({ code, frontmatter }) {
           <h1 className="mb-4">{frontmatter.title}</h1>
         </div>
       </div>
-      <article className="flex prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
-        <div className="flex flex-col pr-12 mr-30">
-          <div className="border-b">
+      <article className="flex flex-row prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark md:flex-col md:text-center">
+        <div className="flex flex-col pr-12 mr-30 md:px-8">
+          <div className="border-b md:flex-row md:flex md:items-center md:justify-start">
             <Image
               src={`/images/team/${frontmatter.pfp}`}
               width={60}
@@ -32,12 +32,14 @@ export default function Post({ code, frontmatter }) {
               alt="img"
               className="rounded-full"
             />
-            <p className="mt-2 mb-0">{frontmatter.author}</p>
-            <Link href={frontmatter.social_link} passHref>
-              <p className="mt-0 text-purple-400 duration-200 hover:text-pink-600 hover:cursor-pointer">
-                @{frontmatter.social}
-              </p>
-            </Link>
+            <div className="md:ml-4">
+              <p className="mt-2 mb-0">{frontmatter.author}</p>
+              <Link href={frontmatter.social_link} passHref>
+                <p className="mt-0 text-purple-400 duration-200 hover:text-pink-600 hover:cursor-pointer">
+                  @{frontmatter.social}
+                </p>
+              </Link>
+            </div>
           </div>
           <div className="border-b">
             <p className="my-8">Written {frontmatter.date}</p>
@@ -48,7 +50,7 @@ export default function Post({ code, frontmatter }) {
             </p>
           </Link>
         </div>
-        <div className="w-8/12">
+        <div className="w-8/12 md:w-full">
           <Component />
         </div>
       </article>
