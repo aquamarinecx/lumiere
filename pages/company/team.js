@@ -10,7 +10,7 @@ const members = [
     pfp: 'anthony.jpg',
     desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad miniLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini',
     github: 'https://github.com/AnthonyKuang',
-    pos: 'CEO',
+    pos: 'Director, Dev Lead',
   },
   {
     name: 'Arash',
@@ -23,15 +23,15 @@ const members = [
     name: 'Arav',
     pfp: 'arav.jpg',
     desc: 'Arav is 14 years old; He is the founder of Creator notes, where he hosts boostrappers, founders & creators. Arav loves Growth, and joined Lumiere to get a chance to learn by experimenting.',
-    github: 'https://twiter.com/heyarav',
-    pos: 'Growth',
+    github: 'https://twitter.com/heyarav',
+    pos: 'Head of Growth',
   },
   {
     name: 'Warren',
     pfp: 'warren.png',
     desc: "Hey! I'm a 15 year old developer from New York! I'm heavily interested in web development and neuroscience!",
     github: 'https://github.com/NebuDev14',
-    pos: 'Developer',
+    pos: 'Product Manager',
   },
 ];
 
