@@ -23,7 +23,7 @@ export default function Post({ code, frontmatter }) {
         </div>
       </div>
       <article className="flex prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
-        <div className="flex flex-col w-full pr-12 mr-30">
+        <div className="flex flex-col pr-12 mr-30">
           <div className="border-b">
             <Image
               src={`/images/team/${frontmatter.pfp}`}
@@ -48,7 +48,7 @@ export default function Post({ code, frontmatter }) {
             </p>
           </Link>
         </div>
-        <div>
+        <div className="w-8/12">
           <Component />
         </div>
       </article>
