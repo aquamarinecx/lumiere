@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FiChevronUp, FiSave } from 'react-icons/fi';
+import { useMediaQuery } from 'react-responsive';
+import { IoReorderThreeOutline } from 'react-icons/io5';
 
 const EditorHeader = ({ collapsed, setCollapsed, state }) => {
   const { data: session } = useSession();
@@ -14,6 +16,8 @@ const EditorHeader = ({ collapsed, setCollapsed, state }) => {
   const [slug, setSlug] = useState('');
   const router = useRouter();
   const titleInput = useRef(null);
+  const isMobile = useMediaQuery({ maxWidth: 889 });
+  const [isOpen, setIsOpen] = useState(false);
 
   const saveDraft = async () => {
     const content = state.value;
@@ -84,42 +88,52 @@ const EditorHeader = ({ collapsed, setCollapsed, state }) => {
             />
           )}
         </div>
-        <div className="flex ml-auto">
-          {session && (
-            <button
-              type="button"
-              className="hidden px-4 py-3 mr-4 text-xs sm:inline button-tertiary lg:text-2xs"
-              onClick={title ? saveDraft : showUntitledError}
-            >
-              <FiSave />
-            </button>
-          )}
-          {session && (
-            <button
-              type="button"
-              className="px-4 py-3 mr-5 text-xs button-tertiary lg:text-2xs sm:hidden"
-              onClick={title ? saveDraft : showUntitledError}
-            >
-              Save draft
-            </button>
-          )}
-          {session ? (
-            <Avatar
-              profileImageSrc={session.user.image}
-              profileName={session.user.name}
-              renderPosition="fullscreen"
-              pageType="editor"
-            />
-          ) : (
-            <button
-              type="button"
-              className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
-              onClick={() => signIn()}
-            >
-              Sign in
-            </button>
-          )}
-        </div>
+        {isMobile ? (
+          <button
+            type="button"
+            className="hidden w-12 h-8 ml-auto transition bg-gray-500 place-items-center rounded-2xl opacity-80 md:grid hover:bg-gray-400 hover:opacity-100"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <IoReorderThreeOutline className="w-6 text-gray-100 h-7" />
+          </button>
+        ) : (
+          <div className="flex ml-auto">
+            {session && (
+              <button
+                type="button"
+                className="hidden px-4 py-3 mr-4 text-xs sm:inline button-tertiary lg:text-2xs"
+                onClick={title ? saveDraft : showUntitledError}
+              >
+                <FiSave />
+              </button>
+            )}
+            {session && (
+              <button
+                type="button"
+                className="px-4 py-3 mr-5 text-xs button-tertiary lg:text-2xs sm:hidden"
+                onClick={title ? saveDraft : showUntitledError}
+              >
+                Save draft
+              </button>
+            )}
+            {session ? (
+              <Avatar
+                profileImageSrc={session.user.image}
+                profileName={session.user.name}
+                renderPosition="fullscreen"
+                pageType="editor"
+              />
+            ) : (
+              <button
+                type="button"
+                className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
+                onClick={() => signIn()}
+              >
+                Sign in
+              </button>
+            )}
+          </div>
+        )}
       </header>
       <button
         type="button"
@@ -132,6 +146,26 @@ const EditorHeader = ({ collapsed, setCollapsed, state }) => {
           }`}
         />
       </button>
+      <div
+        className={`fixed top-0 z-50 w-screen h-screen bg-gray-900 bg-opacity-95 mt-16 p-5 space-y-5 ${
+          isOpen && isMobile ? '' : 'hidden'
+        }`}
+      >
+        <button type="button" onClick={title ? saveDraft : showUntitledError}>
+          <h2 className="text-gray-200 w-max">Save Draft</h2>
+        </button>
+        {session ? (
+          <Avatar pageType="mobile" />
+        ) : (
+          <button
+            type="button"
+            className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
+            onClick={() => signIn()}
+          >
+            Sign in
+          </button>
+        )}
+      </div>
     </>
   );
 };

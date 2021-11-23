@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FiMoon, FiSun } from 'react-icons/fi';
-import { useMediaQuery } from 'react-responsive';
 
 export default function Avatar({ renderPosition, pageType }) {
   const [mounted, setMounted] = useState(false);
@@ -15,7 +14,6 @@ export default function Avatar({ renderPosition, pageType }) {
   useEffect(() => {
     setMounted(true);
   });
-  console.info(session);
 
   // Avatar for smaller screens
   if (pageType === 'mobile') {
