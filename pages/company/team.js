@@ -22,9 +22,9 @@ const members = [
   {
     name: 'Arav',
     pfp: 'arav.jpg',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad miniLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini    ',
-    github: 'https://github.com/IamTregsthedev',
-    pos: 'CMO',
+    desc: "Arav is 14 years old; He is the founder of Creator notes, where he hosts boostrappers, founders & creators. Arav loves Growth, and joined Lumiere to get a chance to learn by expremitning",
+    github: 'https://twiter.com/heyarav',
+    pos: 'Growth',
   },
   {
     name: 'Warren',
