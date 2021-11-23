@@ -15,14 +15,14 @@ const members = [
   {
     name: 'Arash',
     pfp: 'arash.jpg',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad miniLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini   ',
+    desc: 'Arash is a student developer from Singapore passionate about delivering simple, efficient, and easy-to-use creations of technology. He contributes from time to time, and is particularly interested in the open-source scene.',
     github: 'https://github.com/arashnrim',
-    pos: 'Developer',
+    pos: 'Open Source Lead',
   },
   {
     name: 'Arav',
     pfp: 'arav.jpg',
-    desc: "Arav is 14 years old; He is the founder of Creator notes, where he hosts boostrappers, founders & creators. Arav loves Growth, and joined Lumiere to get a chance to learn by expremitning",
+    desc: 'Arav is 14 years old; He is the founder of Creator notes, where he hosts boostrappers, founders & creators. Arav loves Growth, and joined Lumiere to get a chance to learn by experimenting.',
     github: 'https://twiter.com/heyarav',
     pos: 'Growth',
   },
