@@ -15,7 +15,7 @@ export default function Post({ code, frontmatter }) {
         <title>{frontmatter.title}</title>
       </Head>
       <div className="mb-12 md:mb-4">
-        <div className="w-full border-b border-gray-500 md:border-none">
+        <div className="w-full text-center border-b border-gray-500 md:border-none">
           <h1 className="mb-4">{frontmatter.title}</h1>
         </div>
       </div>
