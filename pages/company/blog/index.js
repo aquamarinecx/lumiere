@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '@components/layouts/Layout';
 import { getAllFilesFrontMatter } from '@lib/mdxBundler';
-// error
+
 export default function Blogs({ posts }) {
   return (
     <>
@@ -24,7 +24,7 @@ export default function Blogs({ posts }) {
               {post.title}
             </h2>
           </Link>
-          <p className="mb-8">Published {post.date}</p>
+          <p className="mb-8">Published {post.date}</p>{' '}
           <p className="mb-8 text-xl text-gray-300">{post.desc}</p>
           <Link key={post} href={`/company/blog/${post.file}`} passHref>
             <p className="inline text-lg text-purple-400 hover:cursor-pointer">
