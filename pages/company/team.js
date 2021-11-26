@@ -8,7 +8,7 @@ const members = [
   {
     name: 'Anthony',
     pfp: 'anthony.jpg',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad miniLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini',
+    desc: "Anthony is a 17 year old developer from California. He's passionate about SaaS tooling, startups, and the latest full-stack developments! He's currently interning at Instatus, and leading the Lumiere team.",
     github: 'https://github.com/AnthonyKuang',
     pos: 'Director, Dev Lead',
   },
@@ -29,7 +29,7 @@ const members = [
   {
     name: 'Warren',
     pfp: 'warren.png',
-    desc: "Hey! I'm a 15 year old developer from New York! I'm heavily interested in web development and neuroscience!",
+    desc: "Warren is a 15 year old developer residing in New York. He loves all things web development, and has a great interest in learning things related to technology and science. Currently, he's learning data analysis, web development technologies, neuroscience, and more!",
     github: 'https://github.com/NebuDev14',
     pos: 'Product Manager',
   },

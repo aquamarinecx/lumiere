@@ -1,9 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
 import Layout from '@components/layouts/Layout';
 import { getAllFilesFrontMatter } from '@lib/mdxBundler';
-// error
+
 export default function Blogs({ posts }) {
   return (
     <>
