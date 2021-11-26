@@ -229,7 +229,15 @@ export default function Header({
             <Dialog.Overlay className="fixed inset-0 bg-gray-900 opacity-95" />
             <div className="relative w-screen h-screen pt-16 mx-auto rounded">
               <div className="flex flex-col p-8 text-right">
-                <Dialog.Title className="mb-6">Mobile Navbar</Dialog.Title>
+                {navLinks.map((navLink, i) => (
+                  <Link href={navLink.link} key={i}>
+                    <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
+                      <Dialog.Title className="mb-8">
+                        {navLink.name}
+                      </Dialog.Title>
+                    </a>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
@@ -336,8 +344,14 @@ export default function Header({
         <div className="flex items-center justify-center min-h-screen">
           <Dialog.Overlay className="fixed inset-0 bg-gray-900 opacity-95" />
           <div className="relative w-screen h-screen pt-16 mx-auto rounded">
-            <div className="text-center ">
-              <Dialog.Title>Mobile Navbar</Dialog.Title>
+            <div className="flex flex-col p-8 text-right">
+              {navLinks.map((navLink, i) => (
+                <Link href={navLink.link} key={i}>
+                  <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
+                    <Dialog.Title className="mb-8">{navLink.name}</Dialog.Title>
+                  </a>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
