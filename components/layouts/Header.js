@@ -207,7 +207,7 @@ export default function Header({
           <button
             type="button"
             className="hidden w-12 h-8 ml-auto transition bg-gray-500 place-items-center rounded-2xl opacity-80 md:grid hover:bg-gray-400 hover:opacity-100"
-            onClick={() => setIsOpen(true)}
+            onClick={() => setIsOpen(!isOpen)}
           >
             <IoReorderThreeOutline className="w-6 text-gray-100 h-7" />
           </button>
@@ -215,17 +215,15 @@ export default function Header({
 
         <Dialog
           open={isOpen}
-          onClose={() => setIsOpen(false)}
+          onClose={() => console.log()}
           className="fixed inset-0 z-10 overflow-y-scroll"
         >
           <div className="flex items-center justify-center min-h-screen">
             <Dialog.Overlay className="fixed inset-0 bg-gray-900 opacity-95" />
-
             <div className="relative w-screen h-screen pt-16 mx-auto rounded">
-              <button type="button" onClick={() => setIsOpen(false)}>
-                X
-              </button>
-              <Dialog.Title>Mobile Navbar</Dialog.Title>
+              <div className="text-center ">
+                <Dialog.Title>Mobile Navbar</Dialog.Title>
+              </div>
             </div>
           </div>
         </Dialog>
@@ -344,6 +342,7 @@ export default function Header({
               X
             </button>
             <Dialog.Title>Mobile Navbar</Dialog.Title>
+            <Dialog.Title>YEAH</Dialog.Title>
           </div>
         </div>
       </Dialog>
