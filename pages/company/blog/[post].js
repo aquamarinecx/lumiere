@@ -15,16 +15,13 @@ export default function Post({ code, frontmatter }) {
         <title>{frontmatter.title}</title>
       </Head>
       <div className="mb-12 md:mb-4">
-        <div className="w-full text-center border-b border-gray-500">
-          <p className="text-base text-gray-400">
-            Published {frontmatter.date}
-          </p>
+        <div className="w-full text-center border-b border-gray-500 md:border-none">
           <h1 className="mb-4">{frontmatter.title}</h1>
         </div>
       </div>
       <article className="flex flex-row prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark md:flex-col md:text-center">
-        <div className="flex flex-col pr-12 mr-30 md:px-8">
-          <div className="border-b md:flex-row md:flex md:items-center md:justify-start">
+        <div className="flex flex-col pr-12 mr-30 md:pr-0">
+          <div className="border-b md:flex-row md:flex md:items-center md:justify-center md:border-none">
             <Image
               src={`/images/team/${frontmatter.pfp}`}
               width={60}
@@ -42,7 +39,7 @@ export default function Post({ code, frontmatter }) {
             </div>
           </div>
           <div className="border-b">
-            <p className="my-8">Written {frontmatter.date}</p>
+            <p className="my-8 md:my-4">Published {frontmatter.date}</p>
           </div>
           <Link href="/company/blog" passHref>
             <p className="inline mt-8 text-purple-400 duration-200 hover:cursor-pointer hover:text-pink-600">
@@ -50,7 +47,7 @@ export default function Post({ code, frontmatter }) {
             </p>
           </Link>
         </div>
-        <div className="w-8/12 md:w-full">
+        <div className="w-8/12 text-left md:w-full">
           <Component />
         </div>
       </article>
