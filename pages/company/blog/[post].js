@@ -1,10 +1,7 @@
 import { useMemo } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-<<<<<<< HEAD
-=======
 import Image from 'next/image';
->>>>>>> c2026aa50bb880249bdd9a70c7fa59f76a799264
 import Layout from '@components/layouts/Layout';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { getAllSlugs, getPostBySlug } from '@lib/mdxBundler';
@@ -17,24 +14,6 @@ export default function Post({ code, frontmatter }) {
       <Head>
         <title>{frontmatter.title}</title>
       </Head>
-<<<<<<< HEAD
-      <div className="mb-12">
-        <div className="w-full text-center border-b border-gray-500">
-          <p className="text-base text-gray-400">
-            Published {frontmatter.date}
-          </p>
-          <h1 className="mb-4">{frontmatter.title}</h1>
-        </div>
-      </div>
-      <article className="container prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
-        <Component />
-      </article>
-      <Link href="/company/blog" passHref>
-        <p className="inline-block mt-8 text-purple-400 hover:cursor-pointer">
-          ← Back to Blog page
-        </p>
-      </Link>
-=======
       <div className="mb-12 md:mb-4">
         <div className="w-full text-center border-b border-gray-500 md:border-none">
           <h1 className="mb-4">{frontmatter.title}</h1>
@@ -72,7 +51,6 @@ export default function Post({ code, frontmatter }) {
           <Component />
         </div>
       </article>
->>>>>>> c2026aa50bb880249bdd9a70c7fa59f76a799264
     </>
   );
 }
