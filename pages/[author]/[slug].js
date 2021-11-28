@@ -1,6 +1,8 @@
 import prisma from '@lib/prisma';
 import Layout from '@components/layouts/Layout';
 import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
 import { compileMdx } from '@lib/mdxBundler';
@@ -24,6 +26,24 @@ export default function Publication({
 
       <article className="prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
         <div className="container">
+          <div className="flex flex-col items-center justify-center p-8 mb-8 border-b-2 border-gray-500 md:p-4 md:text-left md:items-start">
+            <Link href="/press" passHref>
+              <p className="mt-0 text-purple-400 duration-200 hover:cursor-pointer hover:text-pink-600">
+                ← Back to Publications
+              </p>
+            </Link>
+            <h1 className="ml-4 md:ml-0 md:mb-2">{title}</h1>
+            <div className="flex flex-row items-center justify-center">
+              <Image
+                src={author.image}
+                alt="author image"
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
+              <p className="ml-6">Written by {author.username}</p>
+            </div>
+          </div>
           <Component components={MDXComponents} />
         </div>
       </article>
