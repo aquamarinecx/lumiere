@@ -248,4 +248,120 @@ export default function Header({
       </header>
     );
   }
+  return (
+    <header className="sticky top-0 z-50 flex items-center mb-16 bg-gray-900 border-b border-gray-700 h-18 lg:h-16">
+      <div className="absolute z-0 w-full h-full -mt-60 lg:-mt-64">
+        <div className="relative h-48">
+          <canvas
+            className="absolute top-0 header-gradient-canvas"
+            data-js-darken-top
+            data-transition-in
+          />
+        </div>
+      </div>
+      <div className="container z-50 flex items-center">
+        <div className="pr-8 border-r border-gray-600 lg:pr-7 md:border-0 md:pr-0">
+          <Link href="/">
+            <a>
+              <figure className="flex items-center group">
+                <div className="relative mr-1.5 mb-0.5 w-10 h-10 lg:w-8 lg:h-8">
+                  <Image
+                    src={projectLumiere}
+                    alt="Project Lumiere logo"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </div>
+                <figcaption className="mb-1 font-serif text-3xl leading-none text-gray-300 transition-colors duration-200 lg:text-2xl group-hover:text-gray-200 lg:mb-0.5">
+                  Lumiere
+                </figcaption>
+              </figure>
+            </a>
+          </Link>
+        </div>
+        <nav className="flex mt-1 text-sm md:hidden">
+          {navLinks.map((navLink, i) => (
+            <Link href={navLink.link} key={i}>
+              <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
+                {navLink.name}
+              </a>
+            </Link>
+          ))}
+          <Popover className="ml-8 lg:ml-7">
+            {({ open }) => (
+              <>
+                <Popover.Button>
+                  <div className="flex items-center transition-colors hover:text-gray-300">
+                    <p className="font-medium lg:text-xs">Discover</p>
+                    <FiChevronDown
+                      className={`${
+                        open && 'transform rotate-180'
+                      } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
+                    />
+                  </div>
+                </Popover.Button>
+                <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
+                  <div className="container beta">This is Discover</div>
+                </Popover.Panel>
+              </>
+            )}
+          </Popover>
+        </nav>
+        <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search for anything"
+            className={`text-field ${
+              session ? 'pr-18 lg:pr-14' : 'pr-9 lg:pr-8'
+            } border-gray-700`}
+          />
+          <FiSearch className="absolute right-0 w-6 h-6 mr-4 text-gray-600" />
+        </form>
+        {session ? (
+          <Avatar renderPosition="container" />
+        ) : (
+          <button
+            type="button"
+            className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5 md:hidden"
+            onClick={() => signIn()}
+          >
+            Sign in
+          </button>
+        )}
+
+        <button
+          type="button"
+          className="hidden w-12 h-8 ml-auto transition bg-gray-500 place-items-center rounded-2xl opacity-80 md:grid hover:bg-gray-400 hover:opacity-100"
+          onClick={() => {
+            console.log(isOpen);
+            setIsOpen(!isOpen);
+          }}
+        >
+          <IoReorderThreeOutline className="w-6 text-gray-100 h-7" />
+        </button>
+      </div>
+
+      <Dialog
+        open={isOpen}
+        onClose={() => console.log()}
+        className="fixed inset-0 z-10 overflow-y-scroll"
+      >
+        <div className="flex items-center justify-center min-h-screen">
+          <Dialog.Overlay className="fixed inset-0 bg-gray-900 opacity-95" />
+          <div className="relative w-screen h-screen pt-16 mx-auto rounded">
+            <div className="flex flex-col p-8 text-right">
+              {navLinks.map((navLink, i) => (
+                <Link href={navLink.link} key={i}>
+                  <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
+                    <Dialog.Title className="mb-8">{navLink.name}</Dialog.Title>
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Dialog>
+    </header>
+  );
 }
