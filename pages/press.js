@@ -24,7 +24,7 @@ export default function Press({ publications }) {
             </p>
           </Article>
         ) : (
-          <section className="space-y-5">
+          <section className="grid grid-cols-2 gap-4 md:grid-cols-1">
             {publications.map((publication) => (
               <Publication
                 key={publication.id}
