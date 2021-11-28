@@ -24,8 +24,20 @@ export default function Publication({
       </Head>
 
       <article className="prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
-        <Image src={author.image} alt="author image" width={50} height={50} />
         <div className="container">
+          <div className="flex flex-col items-center justify-center p-8 mb-8 border-b-2 border-gray-500">
+            <h1 className="ml-4">{title}</h1>
+            <div className="flex flex-row items-center justify-center">
+              <Image
+                src={author.image}
+                alt="author image"
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
+              <p className="ml-6">Written by {author.username}</p>
+            </div>
+          </div>
           <Component components={MDXComponents} />
         </div>
       </article>
