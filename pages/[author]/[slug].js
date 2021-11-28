@@ -1,6 +1,7 @@
 import prisma from '@lib/prisma';
 import Layout from '@components/layouts/Layout';
 import Head from 'next/head';
+import Image from 'next/image';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
 import { compileMdx } from '@lib/mdxBundler';
@@ -23,6 +24,7 @@ export default function Publication({
       </Head>
 
       <article className="prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
+        <Image src={author.image} alt="author image" width={50} height={50} />
         <div className="container">
           <Component components={MDXComponents} />
         </div>
