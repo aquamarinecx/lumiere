@@ -26,13 +26,13 @@ export default function Publication({
 
       <article className="prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
         <div className="container">
-          <div className="flex flex-col items-center justify-center p-8 mb-8 border-b-2 border-gray-500">
+          <div className="flex flex-col items-center justify-center p-8 mb-8 border-b-2 border-gray-500 md:p-4 md:text-left md:items-start">
             <Link href="/press" passHref>
               <p className="mt-0 text-purple-400 duration-200 hover:cursor-pointer hover:text-pink-600">
                 ← Back to Publications
               </p>
             </Link>
-            <h1 className="ml-4">{title}</h1>
+            <h1 className="ml-4 md:ml-0 md:mb-2">{title}</h1>
             <div className="flex flex-row items-center justify-center">
               <Image
                 src={author.image}
