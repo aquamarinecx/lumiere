@@ -7,6 +7,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
 import { compileMdx } from '@lib/mdxBundler';
 import MDXComponents from '@components/editor/MDXComponents';
+import { type } from 'os';
 
 export default function Publication({
   title,
@@ -32,7 +33,8 @@ export default function Publication({
                 ← Back to Publications
               </p>
             </Link>
-            <h1 className="ml-4 md:ml-0 md:mb-2">{title}</h1>
+            <h1 className="mb-2 ml-4 md:ml-0">{title}</h1>
+            <p className="mt-0 mb-8">Published {createdAt}</p>
             <div className="flex flex-row items-center justify-center">
               <Image
                 src={author.image}
@@ -73,8 +75,8 @@ export const getServerSideProps = async ({ params }) => {
     },
   });
 
-  post.createdAt = String(post.createdAt);
-  post.updatedAt = String(post.updatedAt);
+  post.createdAt = post.createdAt.toLocaleDateString();
+  post.updatedAt = post.updatedAt.toLocaleDateString();
 
   const { code, frontmatter } = await compileMdx(post.content);
 
