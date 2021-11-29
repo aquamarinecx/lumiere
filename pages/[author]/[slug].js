@@ -4,10 +4,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getMDXComponent } from 'mdx-bundler/client';
+import { getTimeAndDate } from '@lib/utilities/formatDate';
 import { useMemo } from 'react';
 import { compileMdx } from '@lib/mdxBundler';
 import MDXComponents from '@components/editor/MDXComponents';
-import { type } from 'os';
 
 export default function Publication({
   title,
@@ -75,8 +75,8 @@ export const getServerSideProps = async ({ params }) => {
     },
   });
 
-  post.createdAt = post.createdAt.toLocaleDateString();
-  post.updatedAt = post.updatedAt.toLocaleDateString();
+  post.createdAt = getTimeAndDate(post.createdAt);
+  post.updatedAt = getTimeAndDate(post.updatedAt);
 
   const { code, frontmatter } = await compileMdx(post.content);
 
