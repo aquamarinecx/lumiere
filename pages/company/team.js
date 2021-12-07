@@ -33,6 +33,13 @@ const members = [
     github: 'https://github.com/NebuDev14',
     pos: 'Product Manager',
   },
+  {
+    name: 'Luck',
+    pfp: 'luck.jpg',
+    desc: 'Luck is a 17 year old from California. He is passionate about developing performant applications, skilled in creating, and experimenting with self-improvement.',
+    github: '',
+    pos: 'Cofounder, Head of DevRel',
+  },
 ];
 
 export default function Team() {
