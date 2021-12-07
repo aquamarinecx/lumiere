@@ -22,7 +22,7 @@ const members = [
   {
     name: 'Arav',
     pfp: 'arav.jpg',
-    desc: 'Arav is 14 years old; He is the founder of Creator notes, where he hosts boostrappers, founders & creators. Arav loves Growth, and joined Lumiere to get a chance to learn by experimenting.',
+    desc: 'Arav is 14 years old; He is the founder of Creator notes, where he hosts bootstrappers, founders & creators. Arav loves Growth, and joined Lumiere to get a chance to learn by experimenting.',
     github: 'https://twitter.com/heyarav',
     pos: 'Head of Growth',
   },
@@ -34,9 +34,9 @@ const members = [
     pos: 'Product Manager',
   },
   {
-    name: 'Luck',
-    pfp: 'luck.jpg',
-    desc: 'Luck is a 17 year old from California. He is passionate about developing performant applications, skilled in creating, and experimenting with self-improvement.',
+    name: 'Lakshya',
+    pfp: 'lakshya.jpg',
+    desc: 'Lakshya is a 17 year old from California. He is passionate about developing performant applications, skilled in creating, and experimenting with self-improvement.',
     github: '',
     pos: 'Cofounder, Head of DevRel',
   },
