@@ -40,6 +40,13 @@ const members = [
     github: '',
     pos: 'Cofounder, Head of DevRel',
   },
+  {
+    name: 'Matthew',
+    pfp: 'matthew.jpg',
+    desc: 'Matthew is a 17 year old residing in California. He has a passion for the administrative side of leading SaaS companies, and is in charge of all legal proceedings of the company.',
+    github: '',
+    pos: 'Cofounder, Management Lead',
+  },
 ];
 
 export default function Team() {
