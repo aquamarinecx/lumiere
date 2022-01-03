@@ -32,16 +32,6 @@ export const getServerSideProps = async ({ req, res }) => {
     return { props: { data: [] } };
   }
 
-  // const data = await prisma.post.findMany({
-  //   where: {
-  //     author: { username: session.user.username },
-  //   },
-  //   select: {
-  //     id: true,
-  //     published: true,
-  //   },
-  // });
-
   const userData = await prisma.user.findUnique({
     where: {
       username: session.user.username,
@@ -51,10 +41,21 @@ export const getServerSideProps = async ({ req, res }) => {
     },
   });
 
+  let publishedCount = 0;
+  let draftCount = 0;
+
+  userData.posts.forEach((post) => {
+    if (post.published) publishedCount += 1;
+    else draftCount += 1;
+  });
+
   const stats = {
     name: userData.name,
     email: userData.email,
     username: userData.username,
+    pfp: userData.image,
+    published: publishedCount,
+    drafts: draftCount,
   };
 
   return {
