@@ -274,3 +274,5 @@
   color: rgb(156, 163, 175);
   content: attr(line);
 }
+
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); }
