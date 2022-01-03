@@ -22,7 +22,7 @@ const members = [
   {
     name: 'Arav',
     pfp: 'arav.jpg',
-    desc: 'Arav is 14 years old; He is the founder of Creator notes, where he hosts bootstrappers, founders & creators. Arav loves Growth, and joined Lumiere to get a chance to learn by experimenting.',
+    desc: 'Arav is a 14 year old creator, who has a passion for growth, code, and podcasting. He loves helping others, and learning new things. In his free time, he runs a podcast where he interviews founders and creators.',
     github: 'https://twitter.com/heyarav',
     pos: 'Head of Growth',
   },
