@@ -20,7 +20,7 @@ export default function Statistics({ stats }) {
       <Head>
         <title>Profile - Lumiere</title>
       </Head>
-      <div className="flex flex-row">
+      <div className="flex flex-row w-screen">
         <div className="flex flex-col justify-center">
           <Image
             src={stats.pfp}
@@ -32,7 +32,7 @@ export default function Statistics({ stats }) {
           <h2 className="mt-5 text-3xl">{stats.username}</h2>
           <h3 className="text-2xl text-gray-400">{stats.name}</h3>
         </div>
-        <div className="flex flex-row">
+        <div className="">
           {stats.publications.map((publication) => (
             <Publication
               key={publication.id}
@@ -84,16 +84,12 @@ export const getServerSideProps = async ({ req, res }) => {
     publication.updatedAt = String(publication.updatedAt);
   });
 
-  console.log('-----');
-  console.log(userData);
-
   const stats = {
     name: userData.name,
     email: userData.email,
     username: userData.username,
     pfp: userData.image,
-    // published: publishedCount,
-    // drafts: draftCount,
+    published: userData.posts.length,
     publications: userData.posts,
   };
 
