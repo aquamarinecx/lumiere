@@ -45,7 +45,7 @@ export default function Statistics({ stats }) {
   );
 }
 
-export const getServerSideProps = async ({ req, res }) => {
+export const getServerSideProps = async ({ req, res, params }) => {
   const session = await getSession({ req });
 
   if (!session) {
@@ -55,7 +55,7 @@ export const getServerSideProps = async ({ req, res }) => {
 
   const userData = await prisma.user.findUnique({
     where: {
-      username: session.user.username,
+      username: params.author,
     },
     include: {
       posts: {
