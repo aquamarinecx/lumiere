@@ -32,6 +32,15 @@ export default function Statistics({ stats }) {
           <h2 className="mt-5 text-3xl">{stats.username}</h2>
           <h3 className="text-2xl text-gray-400">{stats.name}</h3>
         </div>
+        <div className="flex flex-row">
+          {stats.publications.map((publication) => (
+            <Publication
+              key={publication.id}
+              post={publication}
+              visibility="public"
+            />
+          ))}
+        </div>
       </div>
     </>
   );
@@ -50,25 +59,41 @@ export const getServerSideProps = async ({ req, res }) => {
       username: session.user.username,
     },
     include: {
-      posts: true,
+      posts: {
+        where: { published: true },
+        select: {
+          id: true,
+          title: true,
+          slug: true,
+          content: true,
+          createdAt: true,
+          updatedAt: true,
+          author: {
+            select: {
+              username: true,
+              image: true,
+            },
+          },
+        },
+      },
     },
   });
 
-  let publishedCount = 0;
-  let draftCount = 0;
-
-  userData.posts.forEach((post) => {
-    if (post.published) publishedCount += 1;
-    else draftCount += 1;
+  userData.posts.forEach((publication) => {
+    publication.createdAt = String(publication.createdAt);
+    publication.updatedAt = String(publication.updatedAt);
   });
-  
+
+  console.log('-----');
+  console.log(userData);
+
   const stats = {
     name: userData.name,
     email: userData.email,
     username: userData.username,
     pfp: userData.image,
-    published: publishedCount,
-    drafts: draftCount,
+    // published: publishedCount,
+    // drafts: draftCount,
     publications: userData.posts,
   };
 
