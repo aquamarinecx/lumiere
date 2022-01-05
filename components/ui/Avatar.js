@@ -93,9 +93,9 @@ export default function Avatar({ renderPosition, pageType }) {
               </Link>
             </div>
             <div className="pt-4 mb-4 border-t border-gray-700">
-              <Link href="/me/statistics">
-                <a className="block py-2 font-normal text-gray-400 transition-colors duration-200 px-7 hover:text-gray-300 hover:bg-gray-700 hover:bg-opacity-70 beta">
-                  Statistics
+              <Link href={`/${session.user.username}`}>
+                <a className="block py-2 font-normal text-gray-400 transition-colors duration-200 px-7 hover:text-gray-300 hover:bg-gray-700 hover:bg-opacity-70">
+                  Profile
                 </a>
               </Link>
               <Link href="/me/settings">
