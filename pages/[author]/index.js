@@ -24,7 +24,7 @@ export default function Statistics({ stats }) {
         <div className="flex flex-col items-start justify-start">
           <Image
             src={stats.pfp}
-            alt="user profile picture"
+            alt={`Profile picture of ${stats.username}`}
             width={275}
             height={275}
             className="inline rounded-full"

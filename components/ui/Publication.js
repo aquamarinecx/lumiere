@@ -53,7 +53,11 @@ export default function Publication({ post, visibility }) {
               width={40}
               height={40}
             />
-            <p>{post.author.username}</p>
+            <Link href={`/${post.author.username}`} passHref>
+              <p className="duration-200 cursor-pointer hover:text-pink-600 hover: hoverL">
+                {post.author.username}
+              </p>
+            </Link>
           </div>
           <span className="text-base text-gray-500">
             <p className="flex items-center">

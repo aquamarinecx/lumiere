@@ -43,7 +43,14 @@ export default function Publication({
                 height={60}
                 className="rounded-full"
               />
-              <p className="ml-6">Written by {author.username}</p>
+              <Link href={`/${author.username}`} passHref>
+                <p className="ml-6">
+                  Written by{' '}
+                  <span className="underline duration-200 hover:text-pink-600 hover:cursor-pointer">
+                    {author.username}
+                  </span>
+                </p>
+              </Link>
             </div>
           </div>
           <Component components={MDXComponents} />
