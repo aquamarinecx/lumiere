@@ -65,15 +65,16 @@ model Post {
   createdAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")
   author         User     @relation(fields: [authorUsername], references: [username], onDelete: Cascade)
-  tags           Tag[]    @relation(fields: [title], references: [name], onDelete: Cascade)
+  tags           Tag[]
 
-  @@id([authorUsername, slug, id])
+  @@id([authorUsername, slug])
   @@map("posts")
 }
 
 model Tag {
-  name  String  @unique
-  posts Post[] 
-  @@id([name])
+  name    String 
+  posts   Post   @relation(fields: [name], references: [id])
+  postId  String @id
+
   @@map("tags")
 }
