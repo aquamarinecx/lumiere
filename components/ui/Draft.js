@@ -35,6 +35,10 @@ export default function Post({ post }) {
     }
   };
 
+  const addTag = async (slug) => {
+    console.log("tag! you're it lmao loser");
+  };
+
   return (
     <article>
       <Link href={`/me/drafts/${post.slug}`} passHref>
@@ -56,7 +60,7 @@ export default function Post({ post }) {
         <button
           type="button"
           className="p-2.5 button-tertiary"
-          onClick={() => publishPost(post.slug)}
+          onClick={() => router.push('/me/drafts/publish/test')}
         >
           Publish
         </button>
