@@ -60,7 +60,7 @@ export default function Post({ post }) {
         <button
           type="button"
           className="p-2.5 button-tertiary"
-          onClick={() => router.push('/me/drafts/publish/test')}
+          onClick={() => router.push(`/me/drafts/publish/${post.id}`)}
         >
           Publish
         </button>

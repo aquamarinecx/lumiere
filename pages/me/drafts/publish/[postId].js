@@ -10,6 +10,10 @@ export default function Publish({ post }) {
   );
 }
 
+export const getServerSideProps = async ({ params }) => {
+  const id = params.postId;
+};
+
 Publish.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
