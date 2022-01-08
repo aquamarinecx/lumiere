@@ -7,20 +7,6 @@ import Article from '@components/ui/Article';
 export default function Post({ post }) {
   const router = useRouter();
 
-  const publishPost = async (slug) => {
-    try {
-      const body = { slug };
-      await fetch('/api/post/publish', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      await router.push('/me/drafts');
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const deletePost = async (slug) => {
     try {
       const body = { slug };
@@ -33,10 +19,6 @@ export default function Post({ post }) {
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const addTag = async (slug) => {
-    console.log("tag! you're it lmao loser");
   };
 
   return (
