@@ -41,20 +41,20 @@ export default function Publish({ post }) {
         className="w-full p-3 mb-3 text-gray-100 bg-gray-800 outline-none rounded-xl"
         placeholder="Enter a small caption/description"
       />
-      <div className="flex flex-row w-full py-2 mb-4">
+      <div className="grid grid-cols-8 gap-5 py-2 mb-4">
         {tags.map((tag) => (
-          <p
+          <div
             key={tag}
-            className="inline px-2 py-1 mr-4 text-purple-400 border border-purple-400 rounded-xl"
+            className="px-2 py-1 mr-4 text-center text-purple-400 border border-purple-400 rounded-xl"
           >
             {tag}
-          </p>
+          </div>
         ))}
       </div>
       <button
         type="button"
         className="px-2.5 py-1 mb-4 text-gray-300 duration-200 border border-gray-400 rounded-xl hover:text-pink-600 hover:border-pink-600"
-        onClick={() => setTag([...tags, 'AAAH'])}
+        onClick={() => setTag([...tags, 'Typescript'])}
       >
         Add tags
       </button>
