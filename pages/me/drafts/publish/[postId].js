@@ -22,6 +22,13 @@ export default function Publish({ post }) {
     }
   };
 
+  const addTag = async (event) => {
+    event.preventDefault();
+    if (event.target.tagInput.value !== '')
+      setTag([...tags, event.target.tagInput.value]);
+    event.target.tagInput.value = '';
+  };
+
   return (
     <>
       <Head>
@@ -45,19 +52,26 @@ export default function Publish({ post }) {
         {tags.map((tag) => (
           <div
             key={tag}
-            className="px-2 py-1 mr-4 text-center text-purple-400 border border-purple-400 rounded-xl"
+            className="px-2 py-1 mr-4 text-center text-purple-400 duration-200 border border-purple-400 hover:border-pink-600 rounded-xl hover:text-pink-600 hover:cursor-pointer"
           >
             {tag}
           </div>
         ))}
       </div>
-      <button
-        type="button"
-        className="px-2.5 py-1 mb-4 text-gray-300 duration-200 border border-gray-400 rounded-xl hover:text-pink-600 hover:border-pink-600"
-        onClick={() => setTag([...tags, 'Typescript'])}
-      >
-        Add tags
-      </button>
+      <form onSubmit={addTag}>
+        <input
+          id="tagInput"
+          className="p-3 mb-3 mr-2 text-gray-100 bg-gray-800 outline-none rounded-xl"
+          placeholder="Enter a tag"
+          autoComplete="off"
+        />
+        <button
+          type="submit"
+          className="px-2.5 py-1 mb-4 text-gray-300 duration-200 border border-gray-400 rounded-xl hover:text-pink-600 hover:border-pink-600"
+        >
+          Add tags
+        </button>
+      </form>
     </>
   );
 }
