@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Layout from '@components/layouts/Layout';
 import prisma from '@lib/prisma';
+import { compileMdx } from '@lib/mdxBundler';
+import { getMDXComponent } from 'mdx-bundler/client';
+import MDXComponents from '@components/editor/MDXComponents';
 
 export default function Publish({ post }) {
   const router = useRouter();
@@ -30,6 +33,8 @@ export default function Publish({ post }) {
     event.target.tagInput.value = '';
   };
 
+  const Component = useMemo(() => getMDXComponent(post.code), [post.code]);
+
   return (
     <>
       <Head>
@@ -48,6 +53,7 @@ export default function Publish({ post }) {
         id="desc"
         className="w-full p-3 mb-3 text-gray-100 bg-gray-800 outline-none rounded-xl"
         placeholder="Enter a small caption/description"
+        autoComplete="off"
       />
       <div className="flex flex-row items-center justify-start">
         <Image
@@ -80,7 +86,7 @@ export default function Publish({ post }) {
           </div>
         ))}
       </div>
-      <form onSubmit={addTag}>
+      <form onSubmit={addTag} className="pb-6 mb-6 border-b-2 border-gray-500">
         <input
           id="tagInput"
           className="p-3 mb-3 mr-2 text-gray-100 bg-gray-800 outline-none rounded-xl"
@@ -94,6 +100,7 @@ export default function Publish({ post }) {
           Add tag
         </button>
       </form>
+      <Component components={MDXComponents} />
     </>
   );
 }
@@ -110,8 +117,15 @@ export const getServerSideProps = async ({ params }) => {
     },
   });
 
+  const { code, frontmatter } = await compileMdx(post.content);
+
+  post.code = code;
+  post.frontmatter = frontmatter;
+
   post.createdAt = String(post.createdAt);
   post.updatedAt = String(post.updatedAt);
+
+  console.log(post);
 
   return {
     props: { post },
