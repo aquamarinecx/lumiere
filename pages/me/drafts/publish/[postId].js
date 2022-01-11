@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Layout from '@components/layouts/Layout';
 import prisma from '@lib/prisma';
+import { BsTagsFill } from 'react-icons/bs';
 
 export default function Publish({ post }) {
   const router = useRouter();
@@ -48,13 +49,24 @@ export default function Publish({ post }) {
         className="w-full p-3 mb-3 text-gray-100 bg-gray-800 outline-none rounded-xl"
         placeholder="Enter a small caption/description"
       />
-      <div className="grid grid-cols-8 gap-5 py-2 mb-4">
+      <div className="py-2 mb-4">
         {tags.map((tag) => (
           <div
             key={tag}
-            className="px-2 py-1 mr-4 text-center text-purple-400 duration-200 border border-purple-400 hover:border-pink-600 rounded-xl hover:text-pink-600 hover:cursor-pointer"
+            className="inline w-full px-4 py-2 mr-4 text-purple-400 duration-200 border border-purple-400 hover:border-pink-600 rounded-xl hover:text-pink-600 hover:cursor-pointer"
           >
-            {tag}
+            <div className="inline-block my-3">
+              <button
+                onClick={() => {
+                  setTag(tags.filter((tempTag) => tempTag !== tag));
+                }}
+                type="button"
+                className="mr-4 text-red-700 duration-200 hover:text-red-400"
+              >
+                X
+              </button>
+              <p className="inline">{tag}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -69,7 +81,7 @@ export default function Publish({ post }) {
           type="submit"
           className="px-2.5 py-1 mb-4 text-gray-300 duration-200 border border-gray-400 rounded-xl hover:text-pink-600 hover:border-pink-600"
         >
-          Add tags
+          Add tag
         </button>
       </form>
     </>
