@@ -12,10 +12,13 @@ export default function Publish({ post }) {
   const router = useRouter();
   const [tags, setTag] = useState([]);
 
-  const publishPost = async (event, slug, title, desc, tagList) => {
-    event.preventDefault();
+  const publishPost = async (event) => {
     try {
-      const body = { slug, title, desc, tagList };
+      event.preventDefault();
+      const title = event.target.title.value;
+      const desc = event.target.desc.value;
+      const { slug } = post;
+      const body = { slug, title, desc, tags };
       await fetch('/api/post/publish', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -46,7 +49,6 @@ export default function Publish({ post }) {
         <button
           type="submit"
           className="p-3.5 mb-4 text-3xl text-gray-200 duration-200 border border-gray-300 rounded-xl hover:text-green-600 hover:border-green-600"
-          onClick={() => publishPost(post.slug)}
         >
           Publish
         </button>
@@ -94,23 +96,20 @@ export default function Publish({ post }) {
             </div>
           ))}
         </div>
-        <form
-          onSubmit={addTag}
-          className="pb-6 mb-6 border-b-2 border-gray-500"
+      </form>
+      <form onSubmit={addTag} className="pb-6 mb-6 border-b-2 border-gray-500">
+        <input
+          id="tagInput"
+          className="p-3 mb-3 mr-2 text-gray-100 bg-gray-800 outline-none rounded-xl"
+          placeholder="Enter a tag"
+          autoComplete="off"
+        />
+        <button
+          type="submit"
+          className="px-2.5 py-1 mb-4 text-gray-300 duration-200 border border-gray-400 rounded-xl hover:text-pink-600 hover:border-pink-600"
         >
-          <input
-            id="tagInput"
-            className="p-3 mb-3 mr-2 text-gray-100 bg-gray-800 outline-none rounded-xl"
-            placeholder="Enter a tag"
-            autoComplete="off"
-          />
-          <button
-            type="submit"
-            className="px-2.5 py-1 mb-4 text-gray-300 duration-200 border border-gray-400 rounded-xl hover:text-pink-600 hover:border-pink-600"
-          >
-            Add tag
-          </button>
-        </form>
+          Add tag
+        </button>
       </form>
       <Component components={MDXComponents} />
     </>
