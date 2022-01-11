@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import Layout from '@components/layouts/Layout';
 import prisma from '@lib/prisma';
-import { BsTagsFill } from 'react-icons/bs';
 
 export default function Publish({ post }) {
   const router = useRouter();
@@ -49,6 +49,16 @@ export default function Publish({ post }) {
         className="w-full p-3 mb-3 text-gray-100 bg-gray-800 outline-none rounded-xl"
         placeholder="Enter a small caption/description"
       />
+      <div className="flex flex-row items-center justify-start">
+        <Image
+          src={post.author.image}
+          width={35}
+          height={35}
+          className="rounded-full "
+          alt={`${post.author.username}s profile picture`}
+        />
+        <p className="ml-3">Published by {post.author.username}</p>
+      </div>
       <div className="py-2 mb-4">
         {tags.map((tag) => (
           <div
@@ -95,13 +105,8 @@ export const getServerSideProps = async ({ params }) => {
     where: {
       id: postId,
     },
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-      content: true,
-      createdAt: true,
-      updatedAt: true,
+    include: {
+      author: true,
     },
   });
 
