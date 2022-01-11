@@ -48,7 +48,13 @@ export default function Publish({ post }) {
       >
         Publish
       </button>
-      <h2 className="mb-4">{post.title}</h2>
+      <input
+        id="title"
+        className="w-full p-4 mb-3 text-3xl text-gray-100 bg-gray-800 outline-none rounded-xl"
+        placeholder="Title"
+        autoComplete="off"
+        defaultValue={post.title}
+      />
       <input
         id="desc"
         className="w-full p-3 mb-3 text-gray-100 bg-gray-800 outline-none rounded-xl"
