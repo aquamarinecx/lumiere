@@ -11,6 +11,8 @@ import MDXComponents from '@components/editor/MDXComponents';
 
 export default function Publication({
   title,
+  desc,
+  tags,
   code,
   frontmatter,
   createdAt,
@@ -34,6 +36,19 @@ export default function Publication({
               </p>
             </Link>
             <h1 className="mb-2 ml-4 md:ml-0">{title}</h1>
+            <p className="mt-0 text-gray-100">{desc}</p>
+            <div className="py-2 mb-4">
+              {tags.map((tag) => (
+                <div
+                  key={tag}
+                  className="inline w-full px-4 py-2 mr-4 text-purple-400 duration-200 border border-purple-400 hover:border-pink-600 rounded-xl hover:text-pink-600 hover:cursor-pointer"
+                >
+                  <div className="inline-block my-3 mt-0">
+                    <p className="inline">{tag}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
             <p className="mt-0 mb-8">Published {createdAt}</p>
             <div className="flex flex-row items-center justify-center">
               <Image
@@ -70,6 +85,7 @@ export const getServerSideProps = async ({ params }) => {
     },
     select: {
       title: true,
+      desc: true,
       content: true,
       createdAt: true,
       updatedAt: true,
@@ -79,6 +95,7 @@ export const getServerSideProps = async ({ params }) => {
           image: true,
         },
       },
+      tags: true,
     },
   });
 
@@ -89,6 +106,8 @@ export const getServerSideProps = async ({ params }) => {
 
   post.code = code;
   post.frontmatter = frontmatter;
+
+  console.log(post);
 
   return {
     props: post,

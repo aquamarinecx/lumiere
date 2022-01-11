@@ -60,11 +60,13 @@ model Post {
   authorUsername String   @map("author_username")
   slug           String
   title          String
+  desc           String   @default("")
   content        String
   published      Boolean  @default(false)
   createdAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")
   author         User     @relation(fields: [authorUsername], references: [username], onDelete: Cascade)
+  tags           String[]
 
   @@id([authorUsername, slug])
   @@map("posts")
