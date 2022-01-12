@@ -187,7 +187,7 @@ export default function Header({ pageType }) {
             type="text"
             name="search"
             placeholder="Search for anything"
-            autoComplete="false"
+            autoComplete="off"
             className={`text-field ${
               session ? 'pr-18 lg:pr-14' : 'pr-9 lg:pr-8'
             } border-gray-700`}
