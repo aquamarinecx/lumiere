@@ -3,8 +3,8 @@ import prisma from '@lib/prisma';
 
 export default async function handle(req, res) {
   const session = await getSession({ req });
-  const { slug, title, desc, tags } = req.body;
-  console.log(title);
+  const { slug, newTitle, description, tagList } = req.body;
+  console.log(newTitle);
   const authorUsername = session.user.username;
   const result = await prisma.post.update({
     where: {
@@ -12,9 +12,9 @@ export default async function handle(req, res) {
     },
     data: {
       published: true,
-      title,
-      desc,
-      tags,
+      title: newTitle,
+      desc: description,
+      tags: tagList,
     },
   });
   res.json(result);

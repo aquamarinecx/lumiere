@@ -15,10 +15,12 @@ export default function Publish({ post }) {
   const publishPost = async (event) => {
     try {
       event.preventDefault();
-      const title = event.target.title.value;
-      const desc = event.target.desc.value;
+      const newTitle = event.target.title.value;
+      const description = event.target.desc.value;
+      const tagList = tags;
       const { slug } = post;
-      const body = { slug, title, desc, tags };
+      const body = { slug, newTitle, description, tagList };
+      console.log(body);
       await fetch('/api/post/publish', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -26,7 +28,7 @@ export default function Publish({ post }) {
       });
       await router.push('/me/drafts');
     } catch (error) {
-      console.error(error);
+      console.error(`error aaa: ${error}`);
     }
   };
 

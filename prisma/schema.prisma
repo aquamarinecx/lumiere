@@ -41,9 +41,9 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  username      String?   @unique
   accounts      Account[]
   sessions      Session[]
-  username      String?   @unique
   posts         Post[]
 }
 
@@ -60,13 +60,13 @@ model Post {
   authorUsername String   @map("author_username")
   slug           String
   title          String
-  desc           String   @default("")
   content        String
   published      Boolean  @default(false)
   createdAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")
-  author         User     @relation(fields: [authorUsername], references: [username], onDelete: Cascade)
   tags           String[]
+  desc           String?   @default("(no description)")
+  author         User     @relation(fields: [authorUsername], references: [username], onDelete: Cascade)
 
   @@id([authorUsername, slug])
   @@map("posts")
