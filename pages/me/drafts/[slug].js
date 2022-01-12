@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import MDXEditor from '@components/editor/MDXEditor';
 import Head from 'next/head';
-import Header from '@components/layouts/Header';
+import EditorHeader from '@components/layouts/EditorHeader';
 import { useXdm } from '@lib/xdm';
 
 export default function Draft({ title, slug, content, createdAt, updatedAt }) {
@@ -43,13 +43,10 @@ export default function Draft({ title, slug, content, createdAt, updatedAt }) {
         <title>[Draft] — {title}</title>
       </Head>
 
-      <Header
-        pageType="editor"
-        title={title}
-        content={content}
-        saveDraft={saveDraft}
+      <EditorHeader
         collapsed={collapsed}
         setCollapsed={setCollapsed}
+        state={state}
       />
       <MDXEditor state={state} setConfig={setConfig} collapsed={collapsed} />
     </>

@@ -1,10 +1,10 @@
+import { Menu } from '@headlessui/react';
+import { signOut, useSession } from 'next-auth/react';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { Menu } from '@headlessui/react';
-import { useSession, signOut } from 'next-auth/react';
-import { useTheme } from 'next-themes';
-import { FiSun, FiMoon } from 'react-icons/fi';
+import { useEffect, useState } from 'react';
+import { FiMoon, FiSun } from 'react-icons/fi';
 
 export default function Avatar({ renderPosition, pageType }) {
   const [mounted, setMounted] = useState(false);
@@ -13,8 +13,65 @@ export default function Avatar({ renderPosition, pageType }) {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+  });
 
+  // Avatar for smaller screens
+  if (pageType === 'mobile') {
+    return (
+      <>
+        <div className="flex items-center pt-5 border-t border-gray-700">
+          <div className="p-0.5 bg-gradient-to-tr from-amber-500 to-fuchsia-700 rounded-full">
+            <div className="p-0.5 bg-gray-900 rounded-full">
+              <figure className="relative w-8 h-8">
+                <Image
+                  src={session.user.image}
+                  alt={`Picture of ${session.user.name}`}
+                  layout="fill"
+                  objectFit="contain"
+                  className="rounded-full"
+                />
+              </figure>
+            </div>
+          </div>
+          <div className="ml-4">
+            <p className="inline-block font-medium text-gray-300 cursor-default">
+              {session.user.username}
+            </p>
+            <p className="block text-sm cursor-default">{session.user.email}</p>
+          </div>
+        </div>
+        <div className="my-4">
+          <Link href="/editor">
+            <a className="block py-2 font-normal text-gray-400 transition-colors duration-200 px-7 hover:text-gray-300 hover:bg-gray-700 hover:bg-opacity-70">
+              New Publication
+            </a>
+          </Link>
+          <Link href="/me/drafts">
+            <a className="block py-2 font-normal text-gray-400 transition-colors duration-200 px-7 hover:text-gray-300 hover:bg-gray-700 hover:bg-opacity-70">
+              Drafts
+            </a>
+          </Link>
+          <Link href="/me/publications">
+            <a className="block py-2 font-normal text-gray-400 transition-colors duration-200 px-7 hover:text-gray-300 hover:bg-gray-700 hover:bg-opacity-70">
+              Publications
+            </a>
+          </Link>
+          <Link href="/me/statistics">
+            <a className="block py-2 font-normal text-gray-400 transition-colors duration-200 px-7 hover:text-gray-300 hover:bg-gray-700 hover:bg-opacity-70 beta">
+              Statistics
+            </a>
+          </Link>
+          <Link href="/me/settings">
+            <a className="block py-2 font-normal text-gray-400 transition-colors duration-200 px-7 hover:text-gray-300 hover:bg-gray-700 hover:bg-opacity-70">
+              Settings
+            </a>
+          </Link>
+        </div>
+      </>
+    );
+  }
+
+  // Avatar for larger screens
   return (
     <Menu as="div" className={pageType !== 'editor' && 'md:hidden'}>
       <Menu.Button className="flex cursor-pointer">

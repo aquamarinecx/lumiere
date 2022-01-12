@@ -1,47 +1,66 @@
-import { useState, useRef } from 'react';
-import Head from 'next/head';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import toast, { Toaster } from 'react-hot-toast';
 import MDXEditor from '@components/editor/MDXEditor';
-import Header from '@components/layouts/Header';
-import { useBeforeunload } from 'react-beforeunload';
+import EditorHeader from '@components/layouts/EditorHeader';
 import { useXdm } from '@lib/xdm';
+import { useSession } from 'next-auth/react';
+import Head from 'next/head';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { useBeforeunload } from 'react-beforeunload';
+import toast, { Toaster } from 'react-hot-toast';
+import { useMediaQuery } from 'react-responsive';
 
 export default function Editor() {
   const [collapsed, setCollapsed] = useState(false);
-  const [title, setTitle] = useState('');
-  const [slug, setSlug] = useState('');
-  const titleInput = useRef(null);
-  const router = useRouter();
   const { data: session } = useSession();
+  const isMobile = useMediaQuery({ maxWidth: 889 });
 
   const [state, setConfig] = useXdm({
     value: '',
   });
 
-  const saveDraft = async () => {
-    const content = state.value;
-    try {
-      const body = { title, content, slug };
-      await fetch('/api/post/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      await router.push('/me/drafts');
-    } catch (error) {
-      console.error(error);
+  const usePrevious = (value) => {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  };
+
+  let previousIsMobile = usePrevious(isMobile);
+  if (previousIsMobile === undefined) {
+    previousIsMobile = isMobile;
+  }
+
+  useEffect(() => {
+    if (isMobile !== previousIsMobile) {
+      toast(
+        () => (
+          <span>
+            It appears that your device width has changed. If the Editor appears
+            to be broken, click{' '}
+            <button
+              type="button"
+              className="underline"
+              onClick={() => window.location.reload()}
+            >
+              here
+            </button>{' '}
+            to reload.{' '}
+            <b>
+              Be sure to {session ? 'save' : 'copy'} your draft to prevent
+              anything from being lost.
+            </b>
+          </span>
+        ),
+        {
+          duration: 10000,
+        }
+      );
     }
-  };
+  }, [isMobile, previousIsMobile]);
 
-  const showUntitledError = () => {
-    titleInput.current.focus();
-    toast.error('You must set a title to your publication before saving.');
-  };
-
+  // NOTE: Remove when autosave is implemented
   useBeforeunload((event) => {
-    if (session && (title !== '' || state.value !== '')) {
+    if (session && state.value !== '') {
       event.preventDefault();
     }
   });
@@ -51,17 +70,10 @@ export default function Editor() {
       <Head>
         <title>Editor — Lumiere</title>
       </Head>
-
-      <Header
-        pageType="editor"
-        title={title}
-        titleInput={titleInput}
-        saveDraft={saveDraft}
-        showUntitledError={showUntitledError}
-        setTitle={setTitle}
-        setSlug={setSlug}
+      <EditorHeader
         collapsed={collapsed}
         setCollapsed={setCollapsed}
+        state={state}
       />
       <MDXEditor state={state} setConfig={setConfig} collapsed={collapsed} />
       <Toaster position="bottom-left" />

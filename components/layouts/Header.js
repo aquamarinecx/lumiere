@@ -1,42 +1,24 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { signIn, useSession } from 'next-auth/react';
-import { Popover, Dialog } from '@headlessui/react';
+import NavItem from '@components/layouts/NavItem';
 import Avatar from '@components/ui/Avatar';
-import { FiChevronDown, FiChevronUp, FiSearch } from 'react-icons/fi';
-import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
 import { Gradient } from '@lib/gradient';
+import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
+import { signIn, useSession } from 'next-auth/react';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { FiSearch, FiSun, FiMoon } from 'react-icons/fi';
 import { IoReorderThreeOutline } from 'react-icons/io5';
+import { useMediaQuery } from 'react-responsive';
 
-const navLinks = [
-  {
-    link: '/press',
-    name: 'Publications',
-  },
-  {
-    link: '/company/blog',
-    name: 'Blog',
-  },
-  {
-    link: '/company/team',
-    name: 'Team',
-  },
+const menuItems = [
+  { name: 'Publications', link: '/press' },
+  { name: 'Discover', contents: [{ name: 'This is Discover', link: '#' }] },
 ];
 
-export default function Header({
-  pageType,
-  setTitle,
-  title,
-  titleInput,
-  setSlug,
-  saveDraft,
-  showUntitledError,
-  collapsed,
-  setCollapsed,
-}) {
+export default function Header({ pageType }) {
   useEffect(() => {
-    if (!pageType) {
+    if (!(pageType === 'home')) {
       const gradient = new Gradient();
       gradient.initGradient('.header-gradient-canvas');
     }
@@ -44,102 +26,13 @@ export default function Header({
 
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 889 });
+  const { theme, setTheme } = useTheme();
 
-  if (pageType === 'editor') {
-    return (
-      <>
-        <header
-          className={`relative h-18 lg:h-16 transition-transform origin-top ${
-            collapsed ? 'scale-y-0' : 'scale-y-1'
-          } flex items-center border-b border-gray-700 bg-gray-900 px-6`}
-        >
-          <div className="flex items-center">
-            <Link href="/">
-              <a>
-                <figure className="relative w-10 h-10 mb-1 lg:w-9 lg:h-9">
-                  <Image
-                    src={projectLumiere}
-                    alt="Project Lumiere logo"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </figure>
-              </a>
-            </Link>
-            {setTitle ? (
-              <input
-                type="text"
-                placeholder="Untitled"
-                value={title}
-                ref={titleInput}
-                className={`rounded-lg bg-transparent text-xl lg:text-lg ml-3 py-2 lg:py-1.5 px-4 w-96 md:w-72 sm:w-48 border-none hover:bg-gray-800 transition-colors text-gray-300 focus:outline-none focus:ring-2 ${
-                  title ? 'focus:ring-blue-600' : 'focus:ring-red-600'
-                } placeholder-gray-500`}
-                onClick={(e) => e.target.select()}
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                  setSlug(
-                    e.target.value
-                      .replaceAll(/[`~!@#$%^&*()_+={}|[;:'"<>,./?]/g, '')
-                      .replaceAll(' ', '-')
-                      .toLowerCase()
-                  );
-                }}
-              />
-            ) : (
-              <input
-                type="text"
-                value={title}
-                className="px-4 py-2 ml-3 text-xl text-gray-300 transition-colors bg-transparent border-none rounded-lg cursor-not-allowed w-96 hover:bg-gray-800"
-                disabled
-              />
-            )}
-          </div>
-          <div className="flex ml-auto">
-            {session && (
-              <button
-                type="button"
-                className="px-4 py-3 mr-5 text-xs button-tertiary lg:text-2xs"
-                onClick={title ? saveDraft : showUntitledError}
-              >
-                Save draft
-              </button>
-            )}
-            {session ? (
-              <Avatar
-                profileImageSrc={session.user.image}
-                profileName={session.user.name}
-                renderPosition="fullscreen"
-                pageType="editor"
-              />
-            ) : (
-              <button
-                type="button"
-                className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
-                onClick={() => signIn()}
-              >
-                Sign in
-              </button>
-            )}
-          </div>
-        </header>
-        <button
-          type="button"
-          className="absolute top-0 z-50 grid w-8 h-6 transition-all -translate-x-1/2 -translate-y-4 bg-gray-500 left-1/2 place-items-center rounded-b-md hover:rounded-b-full hover:translate-y-0"
-          onClick={() => setCollapsed(!collapsed)}
-        >
-          <FiChevronUp
-            className={`w-5 h-5 text-gray-100 -mt-0.5 transition-transform ${
-              collapsed && 'rotate-180'
-            }`}
-          />
-        </button>
-      </>
-    );
-  }
   if (pageType === 'home') {
+    // Home page header — includes several differences for the home page
     return (
-      <header className="sticky top-0 z-50 flex items-center bg-gray-900 border-b border-gray-700 bg-opacity-90 backdrop-filter backdrop-blur-sm backdrop-saturate-200 h-18 lg:h-16">
+      <header className="sticky top-0 z-40 flex items-center bg-gray-900 border-b border-gray-700 bg-opacity-90 backdrop-filter backdrop-blur-sm backdrop-saturate-200 h-18 lg:h-16">
         <div className="container flex items-center">
           <div className="pr-8 border-r border-gray-600 lg:pr-7 md:border-0 md:pr-0">
             <Link href="/">
@@ -160,33 +53,18 @@ export default function Header({
               </a>
             </Link>
           </div>
-          <nav className="flex mt-1 text-sm md:hidden">
-            {navLinks.map((navLink, i) => (
-              <Link href={navLink.link} key={i}>
-                <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
-                  {navLink.name}
-                </a>
-              </Link>
-            ))}
-            <Popover className="ml-8 lg:ml-7">
-              {({ open }) => (
-                <>
-                  <Popover.Button>
-                    <div className="flex items-center transition-colors hover:text-gray-300">
-                      <p className="font-medium lg:text-xs">Discover</p>
-                      <FiChevronDown
-                        className={`${
-                          open && 'transform rotate-180'
-                        } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
-                      />
-                    </div>
-                  </Popover.Button>
-                  <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
-                    <div className="container beta">This is Discover</div>
-                  </Popover.Panel>
-                </>
-              )}
-            </Popover>
+
+          {/* Menu bar for large screens */}
+          <nav className="flex mt-1 space-x-5 text-sm md:hidden">
+            {!isMobile &&
+              menuItems.map((item) => (
+                <NavItem
+                  title={item.name}
+                  link={item.link ? item.link : undefined}
+                  contents={item.contents ? item.contents : undefined}
+                  key={item.name}
+                />
+              ))}
           </nav>
           <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
             <input
@@ -212,45 +90,56 @@ export default function Header({
             </button>
           )}
 
+          {/* Menu bar for small screens */}
           <button
             type="button"
             className="hidden w-12 h-8 ml-auto transition bg-gray-500 place-items-center rounded-2xl opacity-80 md:grid hover:bg-gray-400 hover:opacity-100"
-            onClick={() => {
-              console.log(isOpen);
-              setIsOpen(!isOpen);
-            }}
+            onClick={() => setIsOpen(!isOpen)}
           >
             <IoReorderThreeOutline className="w-6 text-gray-100 h-7" />
           </button>
         </div>
-
-        <Dialog
-          open={isOpen}
-          onClose={() => console.log()}
-          className="fixed inset-0 z-10 overflow-y-scroll"
+        <div
+          className={`fixed top-0 z-50 w-screen h-screen bg-gray-900 bg-opacity-95 mt-16 p-5 space-y-5 ${
+            isOpen && isMobile ? '' : 'hidden'
+          }`}
         >
-          <div className="flex items-center justify-center min-h-screen">
-            <Dialog.Overlay className="fixed inset-0 bg-gray-900 opacity-95" />
-            <div className="relative w-screen h-screen pt-16 mx-auto rounded">
-              <div className="flex flex-col p-8 text-right">
-                {navLinks.map((navLink, i) => (
-                  <Link href={navLink.link} key={i}>
-                    <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
-                      <Dialog.Title className="mb-8">
-                        {navLink.name}
-                      </Dialog.Title>
-                    </a>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Dialog>
+          {isMobile &&
+            menuItems.map((item) => (
+              <NavItem
+                title={item.name}
+                link={item.link ? item.link : undefined}
+                contents={item.contents ? item.contents : undefined}
+                key={item.name}
+              />
+            ))}
+          {session ? (
+            <Avatar pageType="mobile" />
+          ) : (
+            <button
+              type="button"
+              className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
+              onClick={() => signIn()}
+            >
+              Sign in
+            </button>
+          )}
+          <button
+            type="button"
+            className="flex items-center space-x-2 heading-tertiary"
+            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          >
+            {theme === 'light' ? <FiSun /> : <FiMoon />}
+            <p>Toggle {theme === 'light' ? 'dark' : 'light'} mode</p>
+          </button>
+        </div>
       </header>
     );
   }
+
+  // Default header — for everything else
   return (
-    <header className="sticky top-0 z-50 flex items-center mb-16 bg-gray-900 border-b border-gray-700 h-18 lg:h-16">
+    <header className="sticky top-0 z-40 flex items-center mb-16 bg-gray-900 border-b border-gray-700 h-18 lg:h-16">
       <div className="absolute z-0 w-full h-full -mt-60 lg:-mt-64">
         <div className="relative h-48">
           <canvas
@@ -260,7 +149,7 @@ export default function Header({
           />
         </div>
       </div>
-      <div className="container z-50 flex items-center">
+      <div className="container z-40 flex items-center">
         <div className="pr-8 border-r border-gray-600 lg:pr-7 md:border-0 md:pr-0">
           <Link href="/">
             <a>
@@ -280,33 +169,18 @@ export default function Header({
             </a>
           </Link>
         </div>
-        <nav className="flex mt-1 text-sm md:hidden">
-          {navLinks.map((navLink, i) => (
-            <Link href={navLink.link} key={i}>
-              <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
-                {navLink.name}
-              </a>
-            </Link>
-          ))}
-          <Popover className="ml-8 lg:ml-7">
-            {({ open }) => (
-              <>
-                <Popover.Button>
-                  <div className="flex items-center transition-colors hover:text-gray-300">
-                    <p className="font-medium lg:text-xs">Discover</p>
-                    <FiChevronDown
-                      className={`${
-                        open && 'transform rotate-180'
-                      } lg:w-4 lg:h-4 ml-1 w-5 h-5 transition-transform`}
-                    />
-                  </div>
-                </Popover.Button>
-                <Popover.Panel className="absolute left-0 z-10 w-full bg-gray-900 bg-opacity-90 border-b border-gray-700 -bottom-5.5">
-                  <div className="container beta">This is Discover</div>
-                </Popover.Panel>
-              </>
-            )}
-          </Popover>
+
+        {/* Menu bar for large screens */}
+        <nav className="flex mt-1 space-x-5 text-sm md:hidden">
+          {!isMobile &&
+            menuItems.map((item) => (
+              <NavItem
+                title={item.name}
+                link={item.link ? item.link : undefined}
+                contents={item.contents ? item.contents : undefined}
+                key={item.name}
+              />
+            ))}
         </nav>
         <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
           <input
@@ -331,38 +205,50 @@ export default function Header({
           </button>
         )}
 
+        {/* Menu bar for small screens */}
         <button
           type="button"
           className="hidden w-12 h-8 ml-auto transition bg-gray-500 place-items-center rounded-2xl opacity-80 md:grid hover:bg-gray-400 hover:opacity-100"
-          onClick={() => {
-            console.log(isOpen);
-            setIsOpen(!isOpen);
-          }}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <IoReorderThreeOutline className="w-6 text-gray-100 h-7" />
         </button>
       </div>
 
-      <Dialog
-        open={isOpen}
-        onClose={() => console.log()}
-        className="fixed inset-0 z-10 overflow-y-scroll"
+      <div
+        className={`fixed top-0 z-50 w-screen h-screen bg-gray-900 opacity-95 mt-16 p-5 space-y-5 ${
+          isOpen && isMobile ? '' : 'hidden'
+        }`}
       >
-        <div className="flex items-center justify-center min-h-screen">
-          <Dialog.Overlay className="fixed inset-0 bg-gray-900 opacity-95" />
-          <div className="relative w-screen h-screen pt-16 mx-auto rounded">
-            <div className="flex flex-col p-8 text-right">
-              {navLinks.map((navLink, i) => (
-                <Link href={navLink.link} key={i}>
-                  <a className="ml-8 font-medium text-gray-400 transition-colors lg:text-xs hover:text-gray-300 lg:ml-7">
-                    <Dialog.Title className="mb-8">{navLink.name}</Dialog.Title>
-                  </a>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Dialog>
+        {isMobile &&
+          menuItems.map((item) => (
+            <NavItem
+              title={item.name}
+              link={item.link ? item.link : undefined}
+              contents={item.contents ? item.contents : undefined}
+              key={item.name}
+            />
+          ))}
+        {session ? (
+          <Avatar pageType="mobile" />
+        ) : (
+          <button
+            type="button"
+            className="px-5 py-3 text-sm lg:text-xs button-primary lg:px-4 lg:py-2.5"
+            onClick={() => signIn()}
+          >
+            Sign in
+          </button>
+        )}
+        <button
+          type="button"
+          className="flex items-center space-x-2 heading-tertiary"
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        >
+          {theme === 'light' ? <FiSun /> : <FiMoon />}
+          <p>Toggle theme</p>
+        </button>
+      </div>
     </header>
   );
 }

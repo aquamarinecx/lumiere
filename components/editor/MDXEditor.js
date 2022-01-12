@@ -11,7 +11,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Split from 'react-split';
 import MDXComponents from '@components/editor/MDXComponents';
 import { statistics } from 'vfile-statistics';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { useMediaQuery } from 'react-responsive';
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => (
   <div role="alert">
@@ -99,6 +99,7 @@ export default function Editor({ state, setConfig, collapsed }) {
     [state, setConfig]
   );
   const stats = state.file ? statistics(state.file) : {};
+  const isMobile = useMediaQuery({ maxWidth: 889 });
 
   return (
     <Split
@@ -107,7 +108,8 @@ export default function Editor({ state, setConfig, collapsed }) {
       gutterSize={10}
       dragInterval={1}
       snapOffset={30}
-      className={`flex ${
+      direction={isMobile ? 'vertical' : 'horizontal'}
+      className={`flex ${isMobile ? 'flex-col' : 'flex-row'} ${
         collapsed ? 'h-screen -mt-18 lg:-mt-16' : 'h-editor-lg lg:h-editor-sm'
       } overflow-y-hidden`}
       gutter={(_, direction) => {
@@ -116,8 +118,15 @@ export default function Editor({ state, setConfig, collapsed }) {
         return gutter;
       }}
     >
-      <section>
-        <Tabs className="flex flex-col justify-between h-full">
+      <MemoizedCodeMirror
+        value={state.value}
+        extensions={extensions}
+        onUpdate={onUpdate}
+        onEditorViewChange={(view) => setEditorView(view)}
+      />
+      {/* <section>
+         TODO: Restore tabs functionality
+         <Tabs className="flex flex-col justify-between h-full">
           <div className="relative h-full">
             <TabPanel
               className={`absolute top-0 w-full h-full ${
@@ -176,9 +185,9 @@ export default function Editor({ state, setConfig, collapsed }) {
             </Tab>
           </TabList>
         </Tabs>
-      </section>
+      </section> */}
 
-      <section className="overflow-y-auto">
+      <section className="flex-1 overflow-y-auto">
         {state.file && state.file.result ? (
           <article className="prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
             <div className="container py-12">
