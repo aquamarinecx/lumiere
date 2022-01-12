@@ -45,6 +45,19 @@ export default function Publication({ post, visibility }) {
       <Link href={`/${post.author.username}/${post.slug}`} passHref>
         <Article title={`View ${post.title}`}>
           <h2 className="text-2xl font-bold">{post.title}</h2>
+          <p className="mb-2">{post.desc}</p>
+          <div className="mb-2">
+            {post.tags.map((tag) => (
+              <div
+                key={tag}
+                className="inline w-full px-2 py-1 mr-2 text-purple-400 duration-200 border border-purple-400 hover:border-pink-600 rounded-xl hover:text-pink-600 hover:cursor-pointer"
+              >
+                <div className="inline-block my-1">
+                  <p className="inline">{tag}</p>
+                </div>
+              </div>
+            ))}
+          </div>
           <div className="flex items-center my-2 space-x-2">
             <Image
               src={post.author.image}
@@ -54,7 +67,7 @@ export default function Publication({ post, visibility }) {
               height={40}
             />
             <Link href={`/${post.author.username}`} passHref>
-              <p className="duration-200 cursor-pointer hover:text-pink-600 hover: hoverL">
+              <p className="text-gray-300 duration-200 cursor-pointer hover:text-pink-600">
                 {post.author.username}
               </p>
             </Link>

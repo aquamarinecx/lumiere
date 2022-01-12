@@ -72,6 +72,8 @@ export const getServerSideProps = async ({ req, res }) => {
           image: true,
         },
       },
+      desc: true,
+      tags: true,
     },
   });
 
