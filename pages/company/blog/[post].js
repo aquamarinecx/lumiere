@@ -47,9 +47,7 @@ export default function Post({ code, frontmatter }) {
             </p>
           </Link>
         </div>
-        <div className="w-8/12 text-left md:w-full">
-          <Component />
-        </div>
+        
       </article>
     </>
   );

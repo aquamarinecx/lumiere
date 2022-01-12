@@ -27,47 +27,54 @@ export default function Publication({
         <title>{`${author.username} — ${title}`}</title>
       </Head>
 
-      <article className="prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark">
-        <div className="container">
-          <div className="flex flex-col items-center justify-center p-8 mb-8 border-b-2 border-gray-500 md:p-4 md:text-left md:items-start">
-            <Link href="/press" passHref>
-              <p className="mt-0 text-purple-400 duration-200 hover:cursor-pointer hover:text-pink-600">
-                ← Back to Publications
+      <div className="mb-12 md:mb-4">
+        <div className="w-full text-center border-b border-gray-500 md:border-none">
+          <h1 className="mb-2">{title}</h1>
+          <p className="mb-8 text-xl text-gray-300">{desc}</p>
+          <div className="flex flex-row items-center justify-center mb-8">
+            <Image
+              src={author.image}
+              alt="author image"
+              width={50}
+              height={50}
+              className="rounded-full"
+            />
+            <Link href={`/${author.username}`} passHref>
+              <p className="ml-6">
+                Written by{' '}
+                <span className="underline duration-200 hover:text-pink-600 hover:cursor-pointer">
+                  {author.username}
+                </span>
               </p>
             </Link>
-            <h1 className="mb-2 ml-4 md:ml-0">{title}</h1>
-            <p className="mt-0 text-gray-100">{desc}</p>
-            <div className="py-2 mb-4">
-              {tags.map((tag) => (
-                <div
-                  key={tag}
-                  className="inline w-full px-4 py-2 mr-4 text-purple-400 duration-200 border border-purple-400 hover:border-pink-600 rounded-xl hover:text-pink-600 hover:cursor-pointer"
-                >
-                  <div className="inline-block my-3 mt-0">
-                    <p className="inline">{tag}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="mt-0 mb-8">Published {createdAt}</p>
-            <div className="flex flex-row items-center justify-center">
-              <Image
-                src={author.image}
-                alt="author image"
-                width={60}
-                height={60}
-                className="rounded-full"
-              />
-              <Link href={`/${author.username}`} passHref>
-                <p className="ml-6">
-                  Written by{' '}
-                  <span className="underline duration-200 hover:text-pink-600 hover:cursor-pointer">
-                    {author.username}
-                  </span>
-                </p>
-              </Link>
-            </div>
           </div>
+        </div>
+      </div>
+      <article className="flex flex-row prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark md:flex-col md:text-center">
+        <div className="flex flex-col w-1/3 pr-12 mr-30 md:pr-0">
+          <div className="py-4">
+            <h3 className="mt-0">Tags</h3>
+            {tags.map((tag) => (
+              <div
+                key={tag}
+                className="inline w-full px-2 py-1 mr-2 text-purple-400 duration-200 border border-purple-400 hover:border-pink-600 rounded-xl hover:text-pink-600 hover:cursor-pointer"
+              >
+                <div className="inline-block my-1">
+                  <p className="inline">{tag}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="border-t">
+            <p className="mt-6 mb-2 md:my-4">Published {createdAt}</p>
+          </div>
+          <Link href="/press" passHref>
+            <p className="mt-0 text-purple-400 duration-200 hover:cursor-pointer hover:text-pink-600">
+              ← Back to Publications
+            </p>
+          </Link>
+        </div>
+        <div className="w-9/12 text-left md:w-full">
           <Component components={MDXComponents} />
         </div>
       </article>
