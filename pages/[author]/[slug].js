@@ -36,6 +36,7 @@ export default function Publication({
               </p>
             </Link>
             <h1 className="mb-2 ml-4 md:ml-0">{title}</h1>
+            <p className="mt-0 text-gray-100">{desc}</p>
             <div className="py-2 mb-4">
               {tags.map((tag) => (
                 <div
@@ -84,6 +85,7 @@ export const getServerSideProps = async ({ params }) => {
     },
     select: {
       title: true,
+      desc: true,
       content: true,
       createdAt: true,
       updatedAt: true,
@@ -93,7 +95,6 @@ export const getServerSideProps = async ({ params }) => {
           image: true,
         },
       },
-      desc: true,
       tags: true,
     },
   });
