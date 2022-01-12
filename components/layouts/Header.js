@@ -193,6 +193,7 @@ export default function Header({
               type="text"
               name="search"
               placeholder="Search for anything"
+              autoComplete="off"
               className={`py-3 lg:py-2.5 rounded-lg border-2 bg-transparent ${
                 session ? 'pr-18 lg:pr-14' : 'pr-9 lg:pr-8'
               } pl-4 text-sm border-gray-700 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-gray-600 placeholder-gray-500`}

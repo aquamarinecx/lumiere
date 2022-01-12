@@ -29,9 +29,13 @@ export default function Publication({
 
       <div className="mb-12 md:mb-4">
         <div className="w-full text-center border-b border-gray-500 md:border-none">
-          <h1 className="mb-2">{title}</h1>
+          <h1 className="mb-2 text-5xl">{title}</h1>
           <p className="mb-8 text-xl text-gray-300">{desc}</p>
-          <div className="flex flex-row items-center justify-center mb-8">
+        </div>
+      </div>
+      <article className="flex flex-row prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark md:flex-col md:text-center">
+        <div className="flex flex-col w-1/3 pr-10 mr-30 md:pr-0">
+          <div className="flex flex-row items-center justify-start pb-4 border-b border-gray-500">
             <Image
               src={author.image}
               alt="author image"
@@ -48,10 +52,6 @@ export default function Publication({
               </p>
             </Link>
           </div>
-        </div>
-      </div>
-      <article className="flex flex-row prose break-words bg-gray-100 dark:bg-gray-900 max-w-none dark:prose-dark md:flex-col md:text-center">
-        <div className="flex flex-col w-1/3 pr-12 mr-30 md:pr-0">
           <div className="py-4">
             <h3 className="mt-0">Tags</h3>
             {tags.map((tag) => (
@@ -65,7 +65,7 @@ export default function Publication({
               </div>
             ))}
           </div>
-          <div className="border-t">
+          <div className="border-t border-gray-500">
             <p className="mt-6 mb-2 md:my-4">Published {createdAt}</p>
           </div>
           <Link href="/press" passHref>
@@ -74,7 +74,7 @@ export default function Publication({
             </p>
           </Link>
         </div>
-        <div className="w-9/12 text-left md:w-full">
+        <div className="w-9/12 pl-8 text-left md:w-full">
           <Component components={MDXComponents} />
         </div>
       </article>
@@ -113,8 +113,6 @@ export const getServerSideProps = async ({ params }) => {
 
   post.code = code;
   post.frontmatter = frontmatter;
-
-  console.log(post);
 
   return {
     props: post,
