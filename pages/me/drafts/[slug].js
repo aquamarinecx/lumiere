@@ -71,6 +71,9 @@ export const getServerSideProps = async ({ req, params }) => {
     },
   });
 
+  console.log('data: ');
+  console.log(post);
+
   post.createdAt = String(post.createdAt);
   post.updatedAt = String(post.updatedAt);
 
