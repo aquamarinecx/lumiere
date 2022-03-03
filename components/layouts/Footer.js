@@ -8,19 +8,11 @@ import { Disclosure } from '@headlessui/react';
 const sitemap = [
   {
     name: 'Media',
-    content: [
-      { name: 'Lumiere Press', link: '/press' },
-      { name: 'Lumiere Channel', link: '/channel' },
-      { name: 'About Media', link: '/media' },
-    ],
+    content: [{ name: 'Lumiere Press', link: '/press' }],
   },
   {
     name: 'Resources',
-    content: [
-      { name: 'Contributing', link: '/resources/contributing' },
-      { name: 'Changelog', link: '/resources/changelog' },
-      { name: 'Contact Us', link: '/resources/contact' },
-    ],
+    content: [{ name: 'Contributing', link: '/resources/contributing' }],
   },
   {
     name: 'Company',
@@ -28,8 +20,6 @@ const sitemap = [
       { name: 'Home', link: '/' },
       { name: 'Blog', link: '/company/blog' },
       { name: 'Team', link: '/company/team' },
-      { name: 'Support Us', link: '/company/donate' },
-      { name: 'Brand', link: '/company/brand' },
     ],
   },
   {
