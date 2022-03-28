@@ -160,97 +160,10 @@ export default function Home({ tweets }) {
             components.
           </p>
           <div className="flex items-center justify-center my-18">
-            <figure className="scale-90 sm:scale-75 sm:-mr-24">
+            <figure className="scale-90 sm:scale-75">
               <div className="relative z-10 group -rotate-3">
                 <div className="absolute bg-gradient-to-tr from-amber-600 to-pink-600 -inset-0.5 rounded-lg blur-2xl group-hover:blur-xl group-hover:opacity-60 transition-all duration-200 opacity-50" />
                 <Tweet key={tweets[0].id} forceDark {...tweets[0]} />
-              </div>
-            </figure>
-
-            <figure className="relative z-20 scale-110 group rotate-6 sm:scale-75">
-              <div className="absolute bg-gradient-to-tr from-emerald-600 to-cyan-600 -inset-0.5 rounded-lg blur-2xl group-hover:blur-xl group-hover:opacity-60 transition-all duration-200 opacity-50" />
-              <div className="relative prose">
-                <pre className="bg-gray-900 language-jsx">
-                  <code className="language-jsx code-highlight">
-                    <span
-                      className="code-line line-number highlight-line"
-                      line={1}
-                    >
-                      <span className="token keyword">const</span> string{' '}
-                      <span className="token operator">=</span>{' '}
-                      <span className="token string">'Hello, World!'</span>
-                      <span className="token punctuation">;</span>
-                      {'\n'}
-                    </span>
-                    <span className="code-line line-number" line={2}>
-                      {'\n'}
-                    </span>
-                    <span className="code-line line-number" line={3}>
-                      <span className="token keyword module">export</span>{' '}
-                      <span className="token keyword">const</span>{' '}
-                      <span className="token function-variable function">
-                        <span className="token maybe-class-name">
-                          Component
-                        </span>
-                      </span>{' '}
-                      <span className="token operator">=</span>{' '}
-                      <span className="token punctuation">(</span>
-                      <span className="token parameter">
-                        <span className="token punctuation">{'{'}</span> props{' '}
-                        <span className="token punctuation">{'}'}</span>
-                      </span>
-                      <span className="token punctuation">)</span>{' '}
-                      <span className="token arrow operator">=&gt;</span>{' '}
-                      <span className="token punctuation">{'{'}</span>
-                      {'\n'}
-                    </span>
-                    <span
-                      className="code-line line-number highlight-line"
-                      line={4}
-                    >
-                      {'  '}
-                      <span className="token keyword control-flow">
-                        return
-                      </span>{' '}
-                      <span className="token punctuation">(</span>
-                      {'\n'}
-                    </span>
-                    <span
-                      className="code-line line-number highlight-line"
-                      line={5}
-                    >
-                      {'    '}
-                      <span className="token tag">
-                        <span className="token tag">
-                          <span className="token punctuation">&lt;</span>h1
-                        </span>
-                        <span className="token punctuation">&gt;</span>
-                      </span>
-                      <span className="token punctuation">{'{'}</span>string
-                      <span className="token punctuation">{'}'}</span>
-                      <span className="token tag">
-                        <span className="token tag">
-                          <span className="token punctuation">&lt;/</span>h1
-                        </span>
-                        <span className="token punctuation">&gt;</span>
-                      </span>
-                      {'\n'}
-                    </span>
-                    <span
-                      className="code-line line-number highlight-line"
-                      line={6}
-                    >
-                      {'  '}
-                      <span className="token punctuation">)</span>
-                      <span className="token punctuation">;</span>
-                      {'\n'}
-                    </span>
-                    <span className="code-line line-number" line={7}>
-                      <span className="token punctuation">{'}'}</span>
-                      {'\n'}
-                    </span>
-                  </code>
-                </pre>
               </div>
             </figure>
           </div>
