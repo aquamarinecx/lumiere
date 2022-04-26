@@ -4,8 +4,10 @@ import { Gradient } from '@lib/gradient';
 import projectLumiere from '@public/images/logos/ProjectLumiere.svg';
 import { signIn, useSession } from 'next-auth/react';
 import { useTheme } from 'next-themes';
+import { route } from 'next/dist/server/router';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FiSearch, FiSun, FiMoon } from 'react-icons/fi';
 import { IoReorderThreeOutline } from 'react-icons/io5';
@@ -27,7 +29,16 @@ export default function Header({ pageType }) {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 889 });
+  const router = useRouter();
   const { theme, setTheme } = useTheme();
+
+  const searchQuery = async (event) => {
+    event.preventDefault();
+    const query = event.target.search.value;
+    await router.push(`/search/${query}`);
+    event.target.search.value = '';
+  }
+
 
   if (pageType === 'home') {
     // Home page header — includes several differences for the home page
@@ -182,8 +193,9 @@ export default function Header({ pageType }) {
               />
             ))}
         </nav>
-        <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
+        <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta" onSubmit={searchQuery}>
           <input
+            id="search"
             type="text"
             name="search"
             placeholder="Search for anything"
