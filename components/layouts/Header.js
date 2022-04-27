@@ -77,7 +77,10 @@ export default function Header({ pageType }) {
                 />
               ))}
           </nav>
-          <form className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta">
+          <form
+            className="relative flex items-center ml-auto mr-7 lg:mr-6 md:hidden beta"
+            onSubmit={searchQuery}
+          >
             <input
               type="text"
               name="search"
