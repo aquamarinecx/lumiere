@@ -2,9 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
-import hackPlus from '@public/images/logos/HackPlus.svg';
-import hackClub from '@public/images/logos/HackClub.svg';
-import editor from '@public/images/editor.png';
+import hackPlus from '@public/images/logos/HackPlus.svg'; 
 import { Gradient } from '@lib/gradient';
 import { FiChevronRight } from 'react-icons/fi';
 import Footer from '@components/layouts/Footer';
@@ -89,6 +87,7 @@ export default function Home({ tweets }) {
             </figure>
           </div>
         </section>
+</figure>
       </div>
 
       <hr className="container border-gray-800" />
