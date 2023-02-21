@@ -163,7 +163,6 @@ export default function Home({ tweets }) {
             <figure className="scale-90 sm:scale-75">
               <div className="relative z-10 group -rotate-3">
                 <div className="absolute bg-gradient-to-tr from-amber-600 to-pink-600 -inset-0.5 rounded-lg blur-2xl group-hover:blur-xl group-hover:opacity-60 transition-all duration-200 opacity-50" />
-                <Tweet key={tweets[0].id} forceDark {...tweets[0]} />
               </div>
             </figure>
           </div>
@@ -174,9 +173,3 @@ export default function Home({ tweets }) {
     </div>
   );
 }
-
-export const getStaticProps = async () => {
-  const tweets = await getTweets(['1395436062411984899']);
-
-  return { props: { tweets } };
-};
